@@ -1,9 +1,19 @@
 <template>
-  <div id="lembrace-website-header">Header</div>
+  <div id="lembrace-website-header">
+    <NavigationMenu />
+    <WebsiteLogo />
+    <HeaderIcons />
+  </div>
 </template>
+
+<script setup lang="ts"></script>
 
 <style scoped>
 #lembrace-website-header {
-  background: var(--primary-color);
+  background: aliceblue;
+  align-items: center;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
 }
 </style>

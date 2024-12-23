@@ -12,9 +12,14 @@
 }
 
 :root {
-  --primary-color: #3498db;
-  --secondary-color: #ffbe76;
-  --tertairy-color: #dff9fb;
+  --primary-color: white;
+  --secondary-color: white;
+  --tertairy-color: white;
   --font-size: 16px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
 }
 </style>
