@@ -10,7 +10,6 @@
 
 <style scoped>
 #lembrace-website-header {
-  background: aliceblue;
   align-items: center;
   height: 60px;
   display: flex;

@@ -18,5 +18,8 @@
 #lembrace-default-layout-content {
   flex-grow: 1;
   overflow: auto;
+  width: 1200px;
+  background-color: antiquewhite;
+  align-self: center;
 }
 </style>
