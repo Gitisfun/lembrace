@@ -6,7 +6,7 @@
 
 <style scoped>
 #lembrace-website-header-logo {
-  height: 60px;
+  height: 75px;
   display: flex;
   flex: 0;
   justify-content: center;

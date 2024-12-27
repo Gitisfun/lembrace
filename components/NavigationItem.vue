@@ -12,6 +12,17 @@ const { title, href } = defineProps<{
 </script>
 
 <style scoped>
-.lembrace-website-nav-item {
+.router-link-active {
+  background-color: black;
+  color: white;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 10px;
+}
+
+.router-link-active:hover {
+  color: #fff; /* Ensure hover states are consistent */
 }
 </style>

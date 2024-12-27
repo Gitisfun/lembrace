@@ -1,9 +1,9 @@
 <template>
   <div id="lembrace-default-layout-container">
     <WebsiteHeader />
-    <div id="lembrace-default-layout-content">
+    <main>
       <slot />
-    </div>
+    </main>
     <WebsiteFooter />
   </div>
 </template>
@@ -15,11 +15,11 @@
   height: 100vh;
 }
 
-#lembrace-default-layout-content {
+main {
   flex-grow: 1;
   overflow: auto;
   width: 1200px;
-  background-color: antiquewhite;
   align-self: center;
+  padding: 30px;
 }
 </style>
