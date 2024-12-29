@@ -1,6 +1,6 @@
 <template>
   <div class="lembrace-website-icon-cart">
-    <GenericIcon name="iconamoon:shopping-bag" size="2rem" />
+    <IconGeneric name="iconamoon:shopping-bag" size="2rem" />
     <span class="lembrace-website-icon-cart-counter">10</span>
   </div>
 </template>

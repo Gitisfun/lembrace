@@ -1,7 +1,7 @@
 <template>
   <div id="lembrace-website-header-logo">
     <NuxtLink to="/cart">
-      <CartIcon />
+      <IconCart />
     </NuxtLink>
   </div>
 </template>

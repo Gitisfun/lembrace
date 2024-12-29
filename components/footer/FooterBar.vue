@@ -1,8 +1,8 @@
 <template>
   <footer>
-    <GenericIcon name="mdi:instagram" size="2rem" />
-    <GenericIcon name="ic:baseline-tiktok" size="2rem" />
-    <GenericIcon name="ic:outline-email" size="2rem" />
+    <IconGeneric name="mdi:instagram" size="2rem" />
+    <IconGeneric name="ic:baseline-tiktok" size="2rem" />
+    <IconGeneric name="ic:outline-email" size="2rem" />
   </footer>
 </template>
 

@@ -1,10 +1,10 @@
 <template>
   <div id="lembrace-default-layout-container">
-    <WebsiteHeader />
+    <HeaderBar />
     <main>
       <div class="lembrace-default-layout-content">
         <slot />
-        <WebsiteFooter />
+        <FooterBar />
       </div>
     </main>
   </div>
@@ -17,8 +17,8 @@
   height: 100vh;
 }
 .lembrace-default-layout-content {
-  width: 1200px;
-
+  margin-right: 300px;
+  margin-left: 300px;
   overflow: auto;
   flex-grow: 1;
 }

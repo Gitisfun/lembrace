@@ -1,7 +1,7 @@
 <template>
   <header>
     <NavigationMenu />
-    <WebsiteLogo />
+    <HeaderLogo />
     <HeaderIcons />
   </header>
 </template>
