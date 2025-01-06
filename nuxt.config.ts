@@ -18,7 +18,7 @@ export default defineNuxtConfig({
   },
   googleFonts: {
     families: {
-      Lora: [300, 400, 500, 600, 700, 800], // Choose font weights
+      Itim: [300, 400, 500, 600, 700, 800], // Choose font weights
     },
     display: 'swap', // Improves loading behavior
   },

@@ -8,6 +8,7 @@
 #lembrace-website-header-logo {
   height: 75px;
   display: flex;
+  font-size: 30px;
   flex: 0;
   justify-content: center;
   align-items: center;

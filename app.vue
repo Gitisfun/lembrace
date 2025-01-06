@@ -9,7 +9,7 @@
 * {
   margin: 0px;
   padding: 0px;
-  font-family: 'Lora', sans-serif;
+  font-family: 'Itim', sans-serif;
 }
 
 :root {
