@@ -1,9 +1,15 @@
 <template>
   <div class="lembrace-website-icon-cart">
     <IconGeneric name="iconamoon:shopping-bag" size="2rem" />
-    <span class="lembrace-website-icon-cart-counter">10</span>
+    <span v-if="store.getShoppingCartCount > 0" class="lembrace-website-icon-cart-counter">{{ store.getShoppingCartCount }}</span>
   </div>
 </template>
+
+<script setup lang="ts">
+import { useGlobalStore } from '../stores/global';
+const store = useGlobalStore();
+</script>
+
 <style scoped>
 .lembrace-website-icon-cart {
   position: relative; /* Necessary for counter positioning */

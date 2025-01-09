@@ -2,28 +2,32 @@
   <div id="lembrace-default-layout-container">
     <HeaderBar />
     <main>
+      <!--
+      <main style="background-color: #e9e4d8">
+      -->
       <div class="lembrace-default-layout-content">
         <slot />
-        <FooterBar />
       </div>
     </main>
+    <FooterBar />
   </div>
 </template>
 
 <style scoped>
+/*
 #lembrace-default-layout-container {
   display: flex;
   flex-direction: column;
   height: 100vh;
 }
+
 .lembrace-default-layout-content {
-  margin-right: 300px;
-  margin-left: 300px;
-  overflow: auto;
-  flex-grow: 1;
+  display: flex;
+  width: 100%;
 }
 
 main {
   align-self: center;
 }
+  */
 </style>

@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
-  modules: ['@nuxt/icon', '@nuxt/image', '@nuxtjs/google-fonts', '@nuxtjs/strapi'],
+  modules: ['@nuxt/icon', '@nuxt/image', '@nuxtjs/google-fonts', '@nuxtjs/strapi', '@pinia/nuxt', 'pinia-plugin-persistedstate'],
   strapi: {
     url: 'http://localhost:1337', // Same Strapi URL
   },

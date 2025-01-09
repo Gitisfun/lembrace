@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <BoxContainer>
     <section class="lembrace-website-section-top">
       <div>
         <NuxtImg src="/uploads/intro_88bdff23b7.jpg" provider="strapi" width="400" height="400" />
@@ -23,7 +23,7 @@
         <NuxtImg src="/uploads/nine_624c64654c.jpg" provider="strapi" width="300" height="300" />
       </div>
     </section>
-  </div>
+  </BoxContainer>
 </template>
 
 <style scoped>
@@ -44,7 +44,6 @@ p {
 .lembrace-website-section-top {
   display: flex;
   gap: 30px;
-  margin-top: 45px;
 }
 
 .lembrace-website-section-top-right {

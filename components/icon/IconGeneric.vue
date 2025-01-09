@@ -13,8 +13,4 @@ const { name, size } = defineProps<{
 .lembrace-website-icon {
   color: black;
 }
-.lembrace-website-icon:hover {
-  color: gold;
-  cursor: pointer;
-}
 </style>
