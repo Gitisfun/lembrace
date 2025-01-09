@@ -45,7 +45,7 @@ console.log(item);
 .lembrace-website-cart-item {
   display: flex;
   align-content: center;
-  gap: 10px;
+  gap: 30px;
   margin-bottom: 15px;
   padding-bottom: 15px;
   border-bottom: 2px solid #bbb;
