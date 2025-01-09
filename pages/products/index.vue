@@ -1,14 +1,13 @@
 <template>
-  <div class="lembrace-website-page-products">
+  <BoxContainer class="lembrace-website-page-products">
     <ProductFilter class="lembrace-website-page-left" />
     <ProductList class="lembrace-website-page-right" />
-  </div>
+  </BoxContainer>
 </template>
 
 <style scoped>
 .lembrace-website-page-products {
   display: flex;
-  margin-top: 45px;
 }
 .lembrace-website-page-left {
   width: 20%;

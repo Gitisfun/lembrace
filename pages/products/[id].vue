@@ -3,7 +3,7 @@
     <div>
       <NuxtImg :src="product?.image?.url" provider="strapi" width="420" height="420" />
     </div>
-    <div>
+    <div class="lembrace-website-product-details">
       <TextHeader>{{ product?.name }}</TextHeader>
       <div class="lembrace-website-product-price">
         <TextDescription description="Prijs:" />
@@ -59,11 +59,11 @@ function addToCart() {
   console.log(categoryLabel);
 
   store.addToCart({
-    documentId: product.value.documentId,
-    name: product.value.name,
-    price: product.value.price,
+    documentId: product.value?.documentId,
+    name: product.value?.name,
+    price: product.value?.price,
     amount: amount.value,
-    image: product.value.image,
+    image: product.value?.image?.url,
     discout: product.value?.discount,
     categoryId,
     categoryLabel,
@@ -78,6 +78,10 @@ function removeFromCart() {
 .lembrace-website-product {
   display: flex;
   gap: 30px;
+}
+
+.lembrace-website-product-details {
+  flex: 1;
 }
 
 .lembrace-website-product-title {

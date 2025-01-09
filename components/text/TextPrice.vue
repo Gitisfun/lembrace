@@ -19,6 +19,7 @@ const formattedPrice = new Intl.NumberFormat('nl-NL', {
 <style scoped>
 .lembrace-website-text-price {
   font-weight: 700;
+  background-color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   padding-right: 25px;
