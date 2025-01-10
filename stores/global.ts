@@ -26,6 +26,26 @@ export const useGlobalStore = defineStore('global', {
     resetCart() {
       this.shoppingCart = [];
     },
+    incrementQuantity(id) {
+      const item = this.getShoppingCartItem(id);
+      console.log('item.amount');
+      console.log(item.amount);
+
+      if (item) {
+        item.amount += 1;
+      }
+    },
+    decrementQuantity(id) {
+      const item = this.getShoppingCartItem(id);
+      console.log('item.amount');
+      console.log(item.amount);
+      if (item) {
+        item.amount -= 1;
+        if (item.amount <= 0) {
+          this.removeFromCart({ documentId: id });
+        }
+      }
+    },
   },
   persist: {
     enabled: true,

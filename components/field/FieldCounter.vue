@@ -1,12 +1,12 @@
 <template>
-  <div v-if="maxAmount !== 0" class="lembrace-website-field-counter">
+  <div v-if="props.maxAmount !== 0" class="lembrace-website-field-counter">
     <p style="margin-bottom: 10px">Aantal</p>
     <div class="lembrace-website-field-counter-inner">
-      <IconButton name="mdi:minus" size="1.5rem" @click="subtract" :disabled="store.isAlreadyInCart(product) || 1 === amount" />
+      <IconButton name="mdi:minus" size="1.5rem" @click="subtract" :disabled="store.isAlreadyInCart(product) || 1 === props.amount" />
       <p>{{ currentAmount }}</p>
-      <IconButton name="mdi:plus" size="1.5rem" @click="add" :disabled="store.isAlreadyInCart(product) || maxAmount === amount" />
+      <IconButton name="mdi:plus" size="1.5rem" @click="add" :disabled="store.isAlreadyInCart(product) || props.maxAmount === props.amount" />
     </div>
-    <p class="lembrace-website-field-description">Er zijn nog {{ maxAmount }} in stock.</p>
+    <p class="lembrace-website-field-description">Er zijn nog {{ props.maxAmount }} in stock.</p>
   </div>
 </template>
 

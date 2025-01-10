@@ -9,7 +9,7 @@
         <TextPrice style="margin: 0px" :label="item?.price" />
       </div>
       <div class="lembrace-website-cart-item-row">
-        <div>{{ item.amount }}</div>
+        <FieldCounterCartItem :id="item.documentId" :amount="item.amount" :maxAmount="item.maxAmount" />
         <IconButton @click="removeFromCart" name="mdi-cart-arrow-up" size="1.5rem" backgroundColor="red" />
       </div>
     </div>
@@ -31,14 +31,8 @@ const { item } = defineProps<{
 }>();
 
 function removeFromCart() {
-  console.log('item.documentId');
-  console.log(item.documentId);
-
   store.removeFromCart(item);
 }
-
-console.log('item');
-console.log(item);
 </script>
 
 <style scoped>

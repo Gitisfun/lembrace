@@ -34,6 +34,9 @@ const dropdownOptions = ref([]);
 
 const response = await findOne('products', route.params.id, { populate: ['image', 'categories'] });
 const cartItem = store.getShoppingCartItem(response?.data?.documentId);
+console.log('cartItem');
+console.log(cartItem);
+
 const defaultAmount = cartItem?.amount || 1;
 
 const defaultSelectedValue = response?.data?.categories[0]?.documentId;
@@ -63,6 +66,7 @@ function addToCart() {
     name: product.value?.name,
     price: product.value?.price,
     amount: amount.value,
+    maxAmount: product.value?.amount,
     image: product.value?.image?.url,
     discout: product.value?.discount,
     categoryId,

@@ -11,7 +11,6 @@
 </template>
 
 <script setup lang="ts">
-// Define props
 const props = defineProps({
   id: {
     type: String,
@@ -26,27 +25,22 @@ const props = defineProps({
     required: true,
   },
   modelValue: {
-    type: Array, // This array will hold the selected values
+    type: Array,
     required: true,
   },
 });
 
-// Emit events
 const emit = defineEmits(['update:modelValue']);
 
-// Computed property to check if this checkbox is selected
 const isChecked = computed(() => props.modelValue.includes(props.value));
 
-// Function to update the value when the checkbox changes
 const updateValue = (event: Event) => {
   const isSelected = (event.target as HTMLInputElement).checked;
   let updatedValue;
 
   if (isSelected) {
-    // Add the current value to the modelValue array
     updatedValue = [...props.modelValue, props.value];
   } else {
-    // Remove the current value from the modelValue array
     updatedValue = props.modelValue.filter((item) => item !== props.value);
   }
 
