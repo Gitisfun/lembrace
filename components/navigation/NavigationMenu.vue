@@ -1,7 +1,7 @@
 <template>
-  <div class="lembrace-website-nav-menu">
+  <nav class="lembrace-website-nav-menu">
     <NavigationItem v-for="item in navigationItems" :key="item.id" :title="item.title" :href="item.href" />
-  </div>
+  </nav>
 </template>
 
 <script setup lang="ts">

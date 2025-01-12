@@ -1,7 +1,7 @@
 <template>
   <BoxContainer class="lembrace-website-product">
     <div>
-      <NuxtImg :src="product?.image?.url" provider="strapi" width="420" height="420" />
+      <ImageDynamic :src="product?.image?.url" :alt="product?.name" size="XL" />
     </div>
     <div class="lembrace-website-product-details">
       <TextHeader>{{ product?.name }}</TextHeader>
@@ -34,8 +34,6 @@ const dropdownOptions = ref([]);
 
 const response = await findOne('products', route.params.id, { populate: ['image', 'categories'] });
 const cartItem = store.getShoppingCartItem(response?.data?.documentId);
-console.log('cartItem');
-console.log(cartItem);
 
 const defaultAmount = cartItem?.amount || 1;
 
@@ -53,13 +51,8 @@ function handleSelectionChange(value) {
 }
 
 function addToCart() {
-  console.log('selectedValue.value');
-  console.log(selectedValue.value);
-
   const categoryId = selectedValue.value;
   const categoryLabel = dropdownOptions.value.find((option) => option.documentId === categoryId)?.label;
-  console.log('categoryLabel');
-  console.log(categoryLabel);
 
   store.addToCart({
     documentId: product.value?.documentId,

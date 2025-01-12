@@ -3,6 +3,8 @@
 </template>
 
 <script setup lang="ts">
+import { formatPrice } from '../../logic/utils';
+
 const props = defineProps({
   label: {
     type: [String, Number],
@@ -10,10 +12,7 @@ const props = defineProps({
   },
 });
 
-const formattedPrice = new Intl.NumberFormat('nl-NL', {
-  style: 'currency',
-  currency: 'EUR',
-}).format(props.label);
+const formattedPrice = formatPrice(props.label);
 </script>
 
 <style scoped>

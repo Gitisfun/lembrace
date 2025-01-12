@@ -1,27 +1,55 @@
 <template>
-  <BoxContainer>
+  <BoxContainer v-if="!isLoading">
     <section class="lembrace-website-section-top">
       <div>
-        <NuxtImg src="/uploads/intro_88bdff23b7.jpg" provider="strapi" width="400" height="400" />
+        <ImageDynamic size="XL" :src="response?.data?.introduction?.image?.url" alt="Handgemaakte sieraden en accessoires" />
       </div>
       <div class="lembrace-website-section-top-right">
-        <h1>Handgemaakte sieraden en accessoires</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <TextHeader size="L">{{ response?.data?.introduction?.header }}</TextHeader>
+        <p>{{ response?.data?.introduction?.description }}</p>
         <div>
-          <NuxtLink class="lembrace-website-button" to="/products">Ga naar de collectie</NuxtLink>
+          <NuxtLink class="lembrace-website-button" to="/products">{{ response?.data?.introduction?.buttonLabel }}</NuxtLink>
         </div>
       </div>
     </section>
     <section class="lembrace-website-section-bottom">
-      <h2>Nieuwe collectie</h2>
-      <div class="lembrace-website-page-home-teaser">
-        <NuxtImg src="/uploads/two_4919e20f06.jpg" provider="strapi" width="300" height="300" />
-        <NuxtImg src="/uploads/twentyfive_58553ed8f4.jpg" provider="strapi" width="300" height="300" />
-        <NuxtImg src="/uploads/nine_624c64654c.jpg" provider="strapi" width="300" height="300" />
+      <h2>{{ response?.data?.collection?.subtitle }}</h2>
+      <div v-if="sortedCollection.length > 0" class="lembrace-website-page-home-teaser">
+        <ImageDynamic v-for="item in sortedCollection" size="M" :src="item?.src?.url" alt="hangertje" />
       </div>
     </section>
   </BoxContainer>
 </template>
+
+<script setup lang="ts">
+const isLoading = ref(true);
+const sortedCollection = ref([]);
+const { find } = useStrapi();
+const response = await find('homepage', {
+  populate: {
+    introduction: {
+      populate: ['image'],
+    },
+    collection: {
+      populate: {
+        images: {
+          populate: '*',
+        },
+      },
+    },
+  },
+});
+sortedCollection.value = response?.data?.collection?.images?.sort((a, b) => a.order - b.order);
+console.log('sortedCollection.value');
+console.log(sortedCollection.value);
+
+console.log(sortedCollection);
+
+isLoading.value = false;
+
+console.log('response');
+console.log(response);
+</script>
 
 <style scoped>
 h1 {

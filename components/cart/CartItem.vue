@@ -1,7 +1,7 @@
 <template>
   <div class="lembrace-website-cart-item">
     <div>
-      <NuxtImg :src="item?.image" :alt="item.name" provider="strapi" width="180" height="180" />
+      <ImageDynamic size="XS" :src="item.image" :alt="item.name" />
     </div>
     <div class="lembrace-website-cart-item-details">
       <div class="lembrace-website-cart-item-row">

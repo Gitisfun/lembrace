@@ -1,15 +1,6 @@
 <template>
   <div class="lembrace-website-product-list">
     <ProductItem v-for="product in products" :id="product.documentId" :title="product.name" :price="product.price" :img="product.image.url" />
-    <!--
-      <ProductItem title="Gouden armbandje" price="12.50" img="/uploads/two_4919e20f06.jpg" />
-      <ProductItem title="Gouden armbandje" price="12.50" img="/uploads/two_4919e20f06.jpg" />
-      <ProductItem title="Gouden armbandje" price="12.50" discount="25" img="/uploads/two_4919e20f06.jpg" />
-      <ProductItem title="Gouden armbandje" price="12.50" discount="25" img="/uploads/two_4919e20f06.jpg" />
-      <ProductItem title="Gouden armbandje" price="12.50" discount="25" img="/uploads/two_4919e20f06.jpg" />
-      <ProductItem title="Gouden armbandje" price="12.50" img="/uploads/two_4919e20f06.jpg" />
-      <ProductItem title="Gouden armbandje" price="12.50" img="/uploads/two_4919e20f06.jpg" />
-      -->
   </div>
 </template>
 
@@ -18,7 +9,24 @@ const { find } = useStrapi();
 
 const products = ref([]);
 
-const response = await find('products', { populate: ['image'] });
+const response = await find('products', {
+  populate: ['image'],
+  filters: {
+    category: {
+      label: {
+        $containsi: [],
+      },
+    },
+    material: {
+      label: {
+        $containsi: [],
+      },
+    },
+    discount: {
+      $gt: 0,
+    },
+  },
+});
 
 products.value = response.data;
 </script>

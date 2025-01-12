@@ -3,6 +3,8 @@ import { defineStore } from 'pinia';
 export const useGlobalStore = defineStore('global', {
   state: () => ({
     shoppingCart: [],
+    filterCategoriesList: [],
+    filterMaterialsList: [],
   }),
   getters: {
     getShoppingCart: (state) => state.shoppingCart,
@@ -19,6 +21,18 @@ export const useGlobalStore = defineStore('global', {
       if (!exists) {
         this.shoppingCart.push(product);
       }
+    },
+    addToFilterCategoriesList(category) {
+      this.filterCategoriesList.push(category);
+    },
+    removeFromFilterCategoriesList(category) {
+      this.filterCategoriesList = this.filterCategoriesList.filter((item) => item !== category);
+    },
+    addToFilterMaterialsList(material) {
+      this.filterMaterialsList.push(material);
+    },
+    removeFromFilterMaterialsList(material) {
+      this.filterMaterialsList = this.filterMaterialsList.filter((item) => item !== material);
     },
     removeFromCart(product) {
       this.shoppingCart = this.shoppingCart.filter((item) => item.documentId !== product.documentId);

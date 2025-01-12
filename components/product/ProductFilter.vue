@@ -2,26 +2,32 @@
   <div>
     <h2>Categories</h2>
     <div class="lembrace-website-checkboxes">
-      <FieldCheckBox id="option1" label="Armbanden" :value="'option1'" v-model="selectedOptions" />
-      <FieldCheckBox id="option2" label="Kettingen" :value="'option2'" v-model="selectedOptions" />
-      <FieldCheckBox id="option3" label="Hangertjes" :value="'option3'" v-model="selectedOptions" />
-      <FieldCheckBox id="option3" label="Ringen" :value="'option3'" v-model="selectedOptions" />
-      <FieldCheckBox id="option3" label="Oorbellen" :value="'option3'" v-model="selectedOptions" />
+      <FieldCheckBox v-for="item in categories" :id="item.id" :label="item.label" :value="item.documentId" v-model="store.filterCategoriesList" />
     </div>
     <h2 style="margin-top: 45px">Materiaal</h2>
     <div class="lembrace-website-checkboxes">
-      <FieldCheckBox id="option1" label="Goud" :value="'option1'" v-model="selectedOptions" />
-      <FieldCheckBox id="option2" label="Zilver" :value="'option2'" v-model="selectedOptions" />
-      <FieldCheckBox id="option3" label="Brons" :value="'option3'" v-model="selectedOptions" />
+      <FieldCheckBox v-for="item in materials" :id="item.id" :label="item.label" :value="item.documentId" v-model="selectedOptions" />
     </div>
     <h2 style="margin-top: 45px">Andere</h2>
     <div class="lembrace-website-checkboxes">
-      <FieldCheckBox id="option1" label="Korting" :value="'option1'" v-model="selectedOptions" />
+      <FieldCheckBox id="korting" label="Korting" :value="'korting'" v-model="selectedOptions" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { useGlobalStore } from '../../stores/global';
+const store = useGlobalStore();
+const { find } = useStrapi();
+
+const categories = ref([]);
+const materials = ref([]);
+const responseCategories = await find('categories');
+const responseMaterials = await find('materials');
+
+categories.value = responseCategories.data;
+materials.value = responseMaterials.data;
+
 const selectedOptions = ref([]);
 </script>
 

@@ -1,15 +1,17 @@
 <template>
   <NuxtLink :to="href" class="lembrace-website-product-item">
-    <NuxtImg :src="img" provider="strapi" width="240" height="240" />
-    <p>{{ title }}</p>
+    <ImageDynamic :src="img" alt="product" />
+    <p>{{ props.title }}</p>
     <div class="lembrace-website-product-item-prices">
-      <span>€ {{ price }}</span>
-      <span v-if="discount" class="lembrace-website-product-item-discount">-{{ discount }}%</span>
+      <span>{{ formattedPrice }}</span>
+      <span v-if="props.discount" class="lembrace-website-product-item-discount">-{{ props.discount }}%</span>
     </div>
   </NuxtLink>
 </template>
 
 <script setup lang="ts">
+import { formatPrice } from '../../logic/utils';
+
 // Define props
 const props = defineProps({
   id: {
@@ -34,6 +36,7 @@ const props = defineProps({
 });
 
 const href = computed(() => `/products/${props.id}`);
+const formattedPrice = formatPrice(props.price);
 </script>
 
 <style scoped>

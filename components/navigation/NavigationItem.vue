@@ -1,7 +1,5 @@
 <template>
-  <div class="lembrace-website-nav-item">
-    <NuxtLink :to="href">{{ title }}</NuxtLink>
-  </div>
+  <NuxtLink class="lembrace-website-nav-item" :to="href">{{ title }}</NuxtLink>
 </template>
 
 <script setup lang="ts">
