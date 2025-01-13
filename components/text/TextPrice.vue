@@ -19,11 +19,11 @@ const formattedPrice = formatPrice(props.label);
 .lembrace-website-text-price {
   font-weight: 700;
   background-color: white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
-  padding-right: 25px;
-  padding-left: 25px;
-  padding-top: 15px;
-  padding-bottom: 15px;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
+  border-radius: 0.375rem;
+  padding-right: 1.5rem;
+  padding-left: 1.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 </style>

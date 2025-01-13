@@ -8,7 +8,7 @@
 
 <style scoped>
 #lembrace-website-header-logo {
-  height: 75px;
+  height: 4.25rem;
   display: flex;
   flex: 1;
   justify-content: end;

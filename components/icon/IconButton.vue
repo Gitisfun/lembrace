@@ -9,7 +9,7 @@
 const props = defineProps<{
   name: string;
   size: string;
-  label: string;
+  label?: string;
 }>();
 </script>
 

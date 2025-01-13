@@ -3,9 +3,9 @@
     <label class="checkbox-label">
       <input type="checkbox" :id="id" :value="value" :checked="isChecked" @change="updateValue" class="checkbox-input" />
       <span class="checkbox-custom"></span>
-      <span class="checkbox-text"
-        ><slot>{{ label }}</slot></span
-      >
+      <span class="checkbox-text">
+        <slot>{{ label }}</slot>
+      </span>
     </label>
   </div>
 </template>
@@ -13,7 +13,7 @@
 <script setup lang="ts">
 const props = defineProps({
   id: {
-    type: String,
+    type: [String, Number],
     required: true,
   },
   label: {
@@ -67,14 +67,14 @@ const updateValue = (event: Event) => {
 }
 
 .checkbox-custom {
-  width: 20px;
-  height: 20px;
+  width: 1.25rem;
+  height: 1.25rem;
   background-color: #fff;
-  border: 2px solid #ccc;
-  border-radius: 4px;
+  border: 0.125rem solid #ccc;
+  border-radius: 0.25rem;
   display: inline-block;
   position: relative;
-  margin-right: 8px;
+  margin-right: 0.5rem;
   transition: all 0.2s ease;
 }
 
@@ -86,18 +86,18 @@ const updateValue = (event: Event) => {
 .checkbox-input:checked + .checkbox-custom::after {
   content: '';
   position: absolute;
-  left: 6px;
-  top: 2px;
-  width: 6px;
-  height: 12px;
+  left: 0.375rem;
+  top: 0.125rem;
+  width: 0.375rem;
+  height: 0.75rem;
   border: solid #fff;
-  border-width: 0 2px 2px 0;
+  border-width: 0 0.125rem 0.125rem 0;
   transform: rotate(45deg);
 }
 
 .checkbox-text {
   color: black;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Montserrat;
   font-size: 1rem;
 }
 </style>

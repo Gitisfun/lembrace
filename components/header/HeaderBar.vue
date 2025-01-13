@@ -13,7 +13,7 @@ header {
   padding-left: 2rem;
   padding-right: 2rem;
   align-items: center;
-  height: 75px;
+  height: 4.25rem;
   display: flex;
   justify-content: space-between;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow below */

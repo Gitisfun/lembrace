@@ -25,7 +25,9 @@ const props = defineProps({
 
 .size-M {
   font-size: 2rem;
-  /* Add margin-bottom */
+  margin-bottom: 1rem;
+  /* 
+  Add margin-bottom */
 }
 
 .size-L {

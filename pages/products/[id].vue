@@ -4,9 +4,8 @@
       <ImageDynamic :src="product?.image?.url" :alt="product?.name" size="XL" />
     </div>
     <div class="lembrace-website-product-details">
-      <TextHeader>{{ product?.name }}</TextHeader>
       <div class="lembrace-website-product-price">
-        <TextDescription description="Prijs:" />
+        <TextHeader>{{ product?.name }}</TextHeader>
         <TextPrice :label="product?.price" />
       </div>
       <TextDescription :description="product?.description" />
@@ -17,7 +16,10 @@
         <IconButton v-if="store.isAlreadyInCart(product)" @click="removeFromCart" name="mdi-cart-arrow-up" size="1.5rem" :disabled="!store.isAlreadyInCart(product)" backgroundColor="red" />
       </div>
       <!-- TODO: Uitverkocht component maken -->
-      <div v-if="product?.amount <= 0">Product is uitverkocht</div>
+      <div v-if="product?.amount <= 0" class="lembrace-website-sold-out">
+        <IconGeneric name="mdi:alert-circle" size="2rem" />
+        <TextDescription style="margin-bottom: 0rem" :description="`Dit product is helaas uitverkocht.`" />
+      </div>
     </div>
   </BoxContainer>
 </template>
@@ -32,17 +34,18 @@ const { findOne } = useStrapi();
 const product = ref(null);
 const dropdownOptions = ref([]);
 
-const response = await findOne('products', route.params.id, { populate: ['image', 'material', 'category'] });
+const response = await findOne('products', route.params.id, { populate: ['image', 'materials', 'category'] });
 const cartItem = store.getShoppingCartItem(response?.data?.documentId);
 
 const defaultAmount = cartItem?.amount || 1;
 
-const defaultSelectedValue = response?.data?.material[0]?.documentId;
+const selectedMaterialId = response?.data?.materials ? response?.data?.materials[0]?.documentId : null;
+const defaultSelectedValue = cartItem?.materialId || selectedMaterialId;
 const selectedValue = ref(defaultSelectedValue);
 
 const amount = ref(defaultAmount);
 
-dropdownOptions.value = response?.data?.material;
+dropdownOptions.value = response?.data?.materials ? response?.data?.materials : [];
 
 product.value = response?.data;
 
@@ -74,7 +77,7 @@ function removeFromCart() {
 <style scoped>
 .lembrace-website-product {
   display: flex;
-  gap: 30px;
+  gap: 2rem;
 }
 
 .lembrace-website-product-details {
@@ -84,23 +87,25 @@ function removeFromCart() {
 .lembrace-website-product-title {
   display: flex;
 }
+
 .lembrace-website-product-price {
   display: flex;
-
   justify-content: space-between;
   align-items: center;
 }
-.lembrace-website-product-price-label {
-  background-color: aliceblue;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
-  padding-right: 25px;
-  padding-left: 25px;
-  padding-top: 15px;
-  padding-bottom: 15px;
-}
+
 .lembrace-website-product-buttons {
   display: flex;
   gap: 15px;
+}
+
+.lembrace-website-sold-out {
+  padding: 1rem;
+  background-color: #f8d7da;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 0.25rem;
+  font-weight: 600;
 }
 </style>

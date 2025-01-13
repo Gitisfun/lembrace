@@ -22,7 +22,7 @@ const sizeClass = computed(() => {
     case 'XL':
       return 'size-xl';
     default:
-      return 'size-m'; // Default to medium if size is not provided
+      return 'size-m';
   }
 });
 </script>

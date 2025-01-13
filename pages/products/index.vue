@@ -9,9 +9,11 @@
 .lembrace-website-page-products {
   display: flex;
 }
+
 .lembrace-website-page-left {
   width: 20%;
 }
+
 .lembrace-website-page-right {
   flex: 1;
   padding: 20px;

@@ -1,12 +1,12 @@
 <template>
   <div v-if="props.maxAmount !== 0" class="lembrace-website-field-counter">
-    <p style="margin-bottom: 10px">Aantal</p>
+    <TextSubtitle size="M">Aantal</TextSubtitle>
     <div class="lembrace-website-field-counter-inner">
       <IconButton name="mdi:minus" size="1.5rem" @click="subtract" :disabled="store.isAlreadyInCart(product) || 1 === props.amount" />
-      <p>{{ currentAmount }}</p>
+      <p class="lembrace-website-field-counter-label">{{ currentAmount }}</p>
       <IconButton name="mdi:plus" size="1.5rem" @click="add" :disabled="store.isAlreadyInCart(product) || props.maxAmount === props.amount" />
     </div>
-    <p class="lembrace-website-field-description">Er zijn nog {{ props.maxAmount }} in stock.</p>
+    <TextDescription size="S" :description="`Er zijn nog ${props.maxAmount} in stock.`" />
   </div>
 </template>
 
@@ -62,20 +62,18 @@ function add() {
 
 <style scoped>
 .lembrace-website-field-counter {
-  margin-bottom: 30px;
+  margin-bottom: 2rem;
 }
 .lembrace-website-field-counter-inner {
   display: flex;
   align-items: center;
-  gap: 25px;
+  gap: 2rem;
+  margin-bottom: 1.25rem;
 }
-p {
-  font-size: 24px;
-}
-button {
-  all: unset;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
+.lembrace-website-field-counter-label {
+  font-size: 1.25rem;
+  font-weight: 600;
+  font-family: Montserrat;
 }
 .lembrace-website-field-description {
   margin-top: 15px;

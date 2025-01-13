@@ -12,7 +12,7 @@ const props = defineProps({
   },
   size: {
     type: String,
-    default: 'M', // Default to 'M'
+    default: 'M',
     validator: (value: string) => ['S', 'M', 'L'].includes(value),
   },
 });
@@ -24,7 +24,7 @@ const props = defineProps({
 }
 
 .size-S {
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   margin-bottom: 1rem;
 }
 
@@ -34,7 +34,7 @@ const props = defineProps({
 }
 
 .size-L {
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   margin-bottom: 2rem;
 }
 </style>

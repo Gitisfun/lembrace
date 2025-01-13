@@ -9,11 +9,10 @@
 <style scoped>
 footer {
   /*background: var(--secondary-color);*/
-  height: 75px;
+  height: 4.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 25px;
-  margin-top: 30px;
+  gap: 2rem;
 }
 </style>

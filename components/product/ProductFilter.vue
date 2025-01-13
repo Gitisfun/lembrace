@@ -2,11 +2,11 @@
   <div>
     <TextSubtitle>Categories</TextSubtitle>
     <div class="lembrace-website-checkboxes">
-      <FieldCheckBox v-for="item in categories" :id="item.id" :label="item.label" :value="item.documentId" v-model="store.filterCategoriesList" />
+      <FieldCheckBox v-for="item in categories" :key="item.id" :id="item.id" :label="item.label" :value="item.documentId" v-model="store.filterCategoriesList" />
     </div>
     <TextSubtitle>Materiaal</TextSubtitle>
     <div class="lembrace-website-checkboxes">
-      <FieldCheckBox v-for="item in materials" :id="item.id" :label="item.label" :value="item.documentId" v-model="selectedOptions" />
+      <FieldCheckBox v-for="item in materials" :key="item.id" :id="item.id" :label="item.label" :value="item.documentId" v-model="selectedOptions" />
     </div>
     <TextSubtitle>Andere</TextSubtitle>
     <div class="lembrace-website-checkboxes">
@@ -37,6 +37,7 @@ const selectedOptions = ref([]);
   flex-direction: column;
   gap: 1rem;
 }
+
 .lembrace-website-checkboxes:not(:last-child) {
   margin-bottom: 2rem;
 }
