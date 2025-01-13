@@ -17,7 +17,6 @@ const props = defineProps({
 <style scoped>
 .lembrace-website-text-header {
   font-weight: 600;
-  margin-bottom: 30px;
 }
 
 .size-S {
@@ -26,9 +25,11 @@ const props = defineProps({
 
 .size-M {
   font-size: 2rem;
+  /* Add margin-bottom */
 }
 
 .size-L {
   font-size: 2.5rem;
+  margin-bottom: 2rem;
 }
 </style>

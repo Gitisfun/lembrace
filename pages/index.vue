@@ -44,7 +44,7 @@ isLoading.value = false;
 <style scoped>
 .lembrace-website-section-top {
   display: flex;
-  gap: 30px;
+  gap: 2rem;
 }
 
 .lembrace-website-section-top-right {
@@ -54,7 +54,7 @@ isLoading.value = false;
 }
 
 .lembrace-website-section-bottom {
-  margin-top: 45px;
+  margin-top: 2rem;
 }
 
 .lembrace-website-page-home-teaser {

@@ -21,18 +21,20 @@ const props = defineProps({
 <style scoped>
 .lembrace-website-text-description {
   font-family: Montserrat;
-  margin-bottom: 30px;
 }
 
 .size-S {
-  font-size: 12px;
+  font-size: 0.75rem;
+  margin-bottom: 1rem;
 }
 
 .size-M {
-  font-size: 16px; /* Default size */
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .size-L {
-  font-size: 20px;
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
 }
 </style>

@@ -17,18 +17,20 @@ const props = defineProps({
 <style scoped>
 .lembrace-website-text-subtitle {
   font-weight: 600;
-  margin-bottom: 30px;
 }
 
 .size-S {
   font-size: 1.2rem;
+  /* Add margin-bottom */
 }
 
 .size-M {
   font-size: 1.5rem;
+  margin-bottom: 1.25rem;
 }
 
 .size-L {
   font-size: 2rem;
+  margin-bottom: 1.5rem;
 }
 </style>

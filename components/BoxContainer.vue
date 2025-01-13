@@ -4,9 +4,9 @@
 
 <style scoped>
 .lembrace-website-box-container {
-  padding-top: 45px;
-  padding-left: 30px;
-  padding-right: 30px;
-  padding-bottom: 30px;
+  padding-top: 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-bottom: 2rem;
 }
 </style>
