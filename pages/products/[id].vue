@@ -32,17 +32,17 @@ const { findOne } = useStrapi();
 const product = ref(null);
 const dropdownOptions = ref([]);
 
-const response = await findOne('products', route.params.id, { populate: ['image', 'categories'] });
+const response = await findOne('products', route.params.id, { populate: ['image', 'material', 'category'] });
 const cartItem = store.getShoppingCartItem(response?.data?.documentId);
 
 const defaultAmount = cartItem?.amount || 1;
 
-const defaultSelectedValue = response?.data?.categories[0]?.documentId;
+const defaultSelectedValue = response?.data?.material[0]?.documentId;
 const selectedValue = ref(defaultSelectedValue);
 
 const amount = ref(defaultAmount);
 
-dropdownOptions.value = response?.data?.categories;
+dropdownOptions.value = response?.data?.material;
 
 product.value = response?.data;
 
@@ -51,8 +51,8 @@ function handleSelectionChange(value) {
 }
 
 function addToCart() {
-  const categoryId = selectedValue.value;
-  const categoryLabel = dropdownOptions.value.find((option) => option.documentId === categoryId)?.label;
+  const materialId = selectedValue.value;
+  const materialLabel = dropdownOptions.value.find((option) => option.documentId === materialId)?.label;
 
   store.addToCart({
     documentId: product.value?.documentId,
@@ -62,8 +62,8 @@ function addToCart() {
     maxAmount: product.value?.amount,
     image: product.value?.image?.url,
     discout: product.value?.discount,
-    categoryId,
-    categoryLabel,
+    materialId,
+    materialLabel,
   });
 }
 function removeFromCart() {

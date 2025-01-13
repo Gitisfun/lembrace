@@ -28,6 +28,9 @@ const response = await find('products', {
   },
 });
 
+console.log('response');
+console.log(response);
+
 products.value = response.data;
 </script>
 

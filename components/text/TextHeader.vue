@@ -1,5 +1,5 @@
 <template>
-  <h1 class="lembrace-website-text-header" :class="sizeClass">
+  <h1 class="lembrace-website-text-header" :class="`size-${props.size}`">
     <slot></slot>
   </h1>
 </template>
@@ -12,18 +12,6 @@ const props = defineProps({
     validator: (value: string) => ['L', 'M', 'S'].includes(value),
   },
 });
-
-// Compute class based on size prop
-const sizeClass = computed(() => {
-  switch (props.size) {
-    case 'L':
-      return 'lembrace-website-text-header--large';
-    case 'S':
-      return 'lembrace-website-text-header--small';
-    default:
-      return 'lembrace-website-text-header--medium';
-  }
-});
 </script>
 
 <style scoped>
@@ -32,15 +20,15 @@ const sizeClass = computed(() => {
   margin-bottom: 30px;
 }
 
-.lembrace-website-text-header--large {
-  font-size: 2.5rem;
+.size-S {
+  font-size: 1.5rem;
 }
 
-.lembrace-website-text-header--medium {
+.size-M {
   font-size: 2rem;
 }
 
-.lembrace-website-text-header--small {
-  font-size: 1.5rem;
+.size-L {
+  font-size: 2.5rem;
 }
 </style>
