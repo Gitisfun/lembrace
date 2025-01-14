@@ -55,14 +55,13 @@ select {
   background-size: 1rem;
   padding: 0.5rem 2rem 0.5rem 1rem;
   font-size: 1rem;
-  border: 1px solid #ccc;
+  border: 0.0625rem solid #ccc;
   border-radius: 0.25rem;
   cursor: pointer;
 }
 
 select:focus {
   outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+  box-shadow: 0 0 0.25rem rgba(0, 123, 255, 0.5);
 }
 </style>

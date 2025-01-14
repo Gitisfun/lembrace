@@ -76,9 +76,4 @@ function add() {
   font-weight: 600;
   font-family: Montserrat;
 }
-.lembrace-website-field-description {
-  margin-top: 15px;
-  font-family: Montserrat;
-  font-size: 14px;
-}
 </style>

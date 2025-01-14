@@ -1,7 +1,7 @@
 <template>
   <NuxtLink :to="href" class="lembrace-website-product-item">
     <ImageDynamic size="M" :src="img" alt="product" />
-    <TextDescription :description="props.title" class="lembrace-website-product-item-text" />
+    <TextDescription :hasMargin="false" :description="props.title" class="lembrace-website-product-item-text" />
     <div class="lembrace-website-product-item-prices">
       <TextDescription :description="formattedPrice" size="L" class="lembrace-website-product-item-text" />
       <span v-if="props.discount" class="lembrace-website-product-item-discount lembrace-website-product-item-text">-{{ props.discount }}%</span>
@@ -49,7 +49,6 @@ const formattedPrice = formatPrice(props.price);
 }
 
 .lembrace-website-product-item-text {
-  margin-bottom: 0rem !important;
   margin-top: 0.25rem;
 }
 

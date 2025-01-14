@@ -13,14 +13,15 @@ const { title, href } = defineProps<{
 .router-link-active {
   background-color: black;
   color: white;
-  padding-right: 10px;
-  padding-left: 10px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.375rem 1rem;
+  border-radius: 0.5rem;
+  transition: color 1s ease;
 }
 
 .router-link-active:hover {
-  color: #fff; /* Ensure hover states are consistent */
+  transition: color 1s ease;
+  color: #fff;
 }
 </style>

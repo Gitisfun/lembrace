@@ -50,19 +50,9 @@ function add() {
 .lembrace-website-field-counter-inner {
   display: flex;
   align-items: center;
-  gap: 25px;
+  gap: 1.5rem;
 }
 p {
-  font-size: 24px;
-}
-button {
-  all: unset;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
-}
-.lembrace-website-field-description {
-  margin-top: 15px;
-  font-family: Montserrat;
-  font-size: 14px;
+  font-size: 1.375rem;
 }
 </style>

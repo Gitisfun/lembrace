@@ -39,10 +39,10 @@ function removeFromCart() {
 .lembrace-website-cart-item {
   display: flex;
   align-content: center;
-  gap: 30px;
-  margin-bottom: 15px;
-  padding-bottom: 15px;
-  border-bottom: 2px solid #bbb;
+  gap: 2rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 0.125rem solid #bbb;
 }
 .lembrace-website-cart-item-details {
   flex: 1;
@@ -54,6 +54,6 @@ function removeFromCart() {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 10px;
+  gap: 1rem;
 }
 </style>

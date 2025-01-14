@@ -6,11 +6,12 @@
 
 <style scoped>
 .lembrace-website-button {
-  border: 2px solid black;
+  border: 0.125rem solid black;
   background-color: black;
   font-weight: 500;
   font-size: large;
   color: white;
+  transition: background-color 0.5s ease-in-out;
 }
 
 .lembrace-website-button:hover {

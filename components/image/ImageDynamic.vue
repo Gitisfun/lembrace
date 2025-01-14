@@ -29,31 +29,31 @@ const sizeClass = computed(() => {
 
 <style scoped>
 .lembrace-website-image {
-  border-radius: 5px;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border-radius: 0.3125rem;
+  box-shadow: rgba(149, 157, 165, 0.2) 0rem 0.5rem 1.5rem;
 }
 
 .size-xs {
-  width: 150px;
-  height: 150px;
+  width: 10rem;
+  height: 10rem;
 }
 
 .size-s {
-  width: 200px;
-  height: 200px;
+  width: 13rem;
+  height: 13rem;
 }
 
 .size-m {
-  width: 250px;
-  height: 250px;
+  width: 16rem;
+  height: 16rem;
 }
 
 .size-l {
-  width: 300px;
-  height: 300px;
+  width: 20rem;
+  height: 20rem;
 }
 .size-xl {
-  width: 400px;
-  height: 400px;
+  width: 25rem;
+  height: 25rem;
 }
 </style>

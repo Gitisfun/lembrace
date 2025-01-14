@@ -97,7 +97,7 @@ function removeFromCart() {
 
 .lembrace-website-product-buttons {
   display: flex;
-  gap: 15px;
+  gap: 1.5rem;
 }
 
 .lembrace-website-sold-out {

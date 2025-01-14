@@ -30,52 +30,51 @@ const iconSize = computed(() => iconSizeMap[size]);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem; /* Space between icon and label */
-  background-color: #fff; /* White background */
-  color: #000; /* Black text */
+  gap: 0.5rem;
+  background-color: #fff;
+  color: #000;
   border: none;
-  border-radius: 8px; /* Rounded corners */
-  font-weight: 600; /* Bold text */
+  border-radius: 0.5rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: box-shadow 0.3s ease, transform 0.2s ease; /* Smooth transitions */
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Light shadow */
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 0.25rem 0.375rem rgba(0, 0, 0, 0.1);
 }
 
 .lembrace-website-icon-button:hover {
-  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
-  transform: translateY(-2px); /* Slight lift effect */
+  box-shadow: 0 0.375rem 0.625rem rgba(0, 0, 0, 0.15);
+  transform: translateY(-0.125rem);
 }
 
 .lembrace-website-icon-button:active {
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow when pressed */
-  transform: translateY(0); /* Reset lift effect */
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
+  transform: translateY(0);
 }
 
 .lembrace-website-icon-button:focus {
-  outline-offset: 2px; /* Space between button and outline */
+  outline-offset: 0.125rem;
 }
 
 .lembrace-website-icon-button:disabled {
-  background-color: #f0f0f0; /* Light grey background */
-  color: #a0a0a0; /* Grey text */
-  cursor: not-allowed; /* Not-allowed cursor */
-  box-shadow: none; /* Remove shadow */
-  transform: none; /* No lift effect */
+  background-color: #f0f0f0;
+  color: #a0a0a0;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
 }
 
-/* Size Variants */
 .size-S {
-  padding: 0.25rem 0.5rem; /* Small padding */
-  font-size: 0.875rem; /* Small text size */
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
 }
 
 .size-M {
-  padding: 0.5rem 1rem; /* Medium padding */
-  font-size: 1rem; /* Default text size */
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
 }
 
 .size-L {
-  padding: 0.75rem 1.5rem; /* Large padding */
-  font-size: 1.125rem; /* Larger text size */
+  padding: 0.75rem 1.5rem;
+  font-size: 1.125rem;
 }
 </style>

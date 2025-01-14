@@ -7,8 +7,8 @@
 
 <style>
 * {
-  margin: 0px;
-  padding: 0px;
+  margin: 0rem;
+  padding: 0rem;
   font-family: 'Itim', sans-serif;
 }
 
@@ -16,16 +16,14 @@
   --primary-color: white;
   --secondary-color: white;
   --tertairy-color: white;
-  --font-size: 16px;
+  --font-size: 1rem;
 }
 
 a {
-  text-decoration: none;
   color: black;
-  padding-right: 10px;
-  padding-left: 10px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  border-radius: 10px;
+  text-decoration: none;
+  padding: 0.375rem 1rem;
+  border-radius: 0.5rem;
+  transition: color 1s ease;
 }
 </style>
