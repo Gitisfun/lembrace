@@ -7,7 +7,7 @@
 <script setup lang="ts">
 const props = defineProps({
   size: {
-    type: String,
+    type: [String, Number],
     default: 'M',
     validator: (value: string) => ['S', 'M', 'L'].includes(value),
   },

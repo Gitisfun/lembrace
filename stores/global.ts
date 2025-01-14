@@ -1,3 +1,4 @@
+import { DELIVERY_COST } from './../logic/constants';
 import { defineStore } from 'pinia';
 
 export const useGlobalStore = defineStore('global', {
@@ -9,11 +10,12 @@ export const useGlobalStore = defineStore('global', {
   getters: {
     getShoppingCart: (state) => state.shoppingCart,
     // TODO: Total must be calculated by multiplying the quantity of each item by its price --- Doesn't work
-    getShoppingCartTotal: (state) => state.shoppingCart.reduce((acc, item) => acc + item.price * item.quantity, 0),
+    getShoppingCartSubtotal: (state) => state.shoppingCart.reduce((acc, item) => acc + item.price * item.amount, 0),
     //getShoppingCartTotal: (state) => state.shoppingCart.reduce((acc, item) => acc + item.price, 0),
     getShoppingCartCount: (state) => state.shoppingCart.length,
     isAlreadyInCart: (state) => (product) => state.shoppingCart.some((item) => item.documentId === product.documentId),
     getShoppingCartItem: (state) => (documentId) => state.shoppingCart.find((item) => item.documentId === documentId),
+    getShoppingCartTotal: (state) => state.getShoppingCartSubtotal + DELIVERY_COST,
   },
   actions: {
     addToCart(product) {
@@ -42,8 +44,6 @@ export const useGlobalStore = defineStore('global', {
     },
     incrementQuantity(id) {
       const item = this.getShoppingCartItem(id);
-      console.log('item.amount');
-      console.log(item.amount);
 
       if (item) {
         item.amount += 1;
@@ -51,8 +51,7 @@ export const useGlobalStore = defineStore('global', {
     },
     decrementQuantity(id) {
       const item = this.getShoppingCartItem(id);
-      console.log('item.amount');
-      console.log(item.amount);
+
       if (item) {
         item.amount -= 1;
         if (item.amount <= 0) {

@@ -34,10 +34,6 @@ const props = defineProps({
   },
 });
 
-console.log('props.id');
-console.log(props.id);
-
-// Handlers
 function subtract() {
   if (props.amount > 1) {
     store.decrementQuantity(props.id);
