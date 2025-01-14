@@ -2,9 +2,9 @@
   <div v-if="props.maxAmount !== 0" class="lembrace-website-field-counter">
     <TextSubtitle size="M">Aantal</TextSubtitle>
     <div class="lembrace-website-field-counter-inner">
-      <IconButton name="mdi:minus" :size="THEME_ICON_BUTTON_SIZE" @click="subtract" :disabled="store.isAlreadyInCart(product) || 1 === props.amount" />
+      <IconButton name="mdi:minus" @click="subtract" :disabled="store.isAlreadyInCart(product) || 1 === props.amount" />
       <p class="lembrace-website-field-counter-label">{{ currentAmount }}</p>
-      <IconButton name="mdi:plus" :size="THEME_ICON_BUTTON_SIZE" @click="add" :disabled="store.isAlreadyInCart(product) || props.maxAmount === props.amount" />
+      <IconButton name="mdi:plus" @click="add" :disabled="store.isAlreadyInCart(product) || props.maxAmount === props.amount" />
     </div>
     <TextDescription size="S" :description="`Er zijn nog ${props.maxAmount} in stock.`" />
   </div>
@@ -12,7 +12,6 @@
 
 <script setup lang="ts">
 import { useGlobalStore } from '../stores/global';
-import { THEME_ICON_BUTTON_SIZE } from '../logic/constants';
 
 const store = useGlobalStore();
 

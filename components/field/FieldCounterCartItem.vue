@@ -1,9 +1,9 @@
 <template>
   <div v-if="props.maxAmount !== 0" class="lembrace-website-field-counter">
     <div class="lembrace-website-field-counter-inner">
-      <IconButton name="mdi:minus" :size="THEME_ICON_BUTTON_SIZE" @click="subtract" :disabled="1 === props.amount" />
+      <IconButton name="mdi:minus" @click="subtract" :disabled="1 === props.amount" />
       <p>{{ amount }}</p>
-      <IconButton name="mdi:plus" :size="THEME_ICON_BUTTON_SIZE" @click="add" :disabled="props.maxAmount === props.amount" />
+      <IconButton name="mdi:plus" @click="add" :disabled="props.maxAmount === props.amount" />
     </div>
     <!--
     TODO: Uitverkocht component maken
@@ -14,7 +14,6 @@
 
 <script setup lang="ts">
 import { useGlobalStore } from '../stores/global';
-import { THEME_ICON_BUTTON_SIZE } from '../../logic/constants';
 
 const store = useGlobalStore();
 

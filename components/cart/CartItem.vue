@@ -10,14 +10,13 @@
       </div>
       <div class="lembrace-website-cart-item-row">
         <FieldCounterCartItem :id="item.documentId" :amount="item.amount" :maxAmount="item.maxAmount" />
-        <IconButton @click="removeFromCart" name="mdi-cart-arrow-up" :size="THEME_ICON_BUTTON_SIZE" />
+        <IconButton @click="removeFromCart" name="mdi-cart-arrow-up" />
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { THEME_ICON_BUTTON_SIZE } from '../logic/constants';
 import { useGlobalStore } from '../../stores/global';
 const store = useGlobalStore();
 

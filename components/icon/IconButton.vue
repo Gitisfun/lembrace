@@ -1,16 +1,28 @@
 <template>
-  <button class="lembrace-website-icon-button">
-    <IconGeneric :name="props.name" :size="props.size" />
+  <button class="lembrace-website-icon-button" :class="`size-${size}`">
+    <IconGeneric :name="props.name" :size="iconSize" />
     <span v-if="props.label">{{ props.label }}</span>
   </button>
 </template>
 
 <script setup lang="ts">
+import { THEME_ICON_BUTTON_SIZE_SMALL, THEME_ICON_BUTTON_SIZE_MEDIUM, THEME_ICON_BUTTON_SIZE_LARGE } from '../../logic/constants';
+
 const props = defineProps<{
   name: string;
-  size: string;
+  size?: 'S' | 'M' | 'L';
   label?: string;
 }>();
+
+const size = props.size || 'M';
+
+const iconSizeMap: Record<'S' | 'M' | 'L', string> = {
+  S: THEME_ICON_BUTTON_SIZE_SMALL,
+  M: THEME_ICON_BUTTON_SIZE_MEDIUM,
+  L: THEME_ICON_BUTTON_SIZE_LARGE,
+};
+
+const iconSize = computed(() => iconSizeMap[size]);
 </script>
 
 <style scoped>
@@ -23,8 +35,6 @@ const props = defineProps<{
   color: #000; /* Black text */
   border: none;
   border-radius: 8px; /* Rounded corners */
-  padding: 0.5rem 1rem; /* Button padding */
-  font-size: 1rem; /* Text size */
   font-weight: 600; /* Bold text */
   cursor: pointer;
   transition: box-shadow 0.3s ease, transform 0.2s ease; /* Smooth transitions */
@@ -51,5 +61,21 @@ const props = defineProps<{
   cursor: not-allowed; /* Not-allowed cursor */
   box-shadow: none; /* Remove shadow */
   transform: none; /* No lift effect */
+}
+
+/* Size Variants */
+.size-S {
+  padding: 0.25rem 0.5rem; /* Small padding */
+  font-size: 0.875rem; /* Small text size */
+}
+
+.size-M {
+  padding: 0.5rem 1rem; /* Medium padding */
+  font-size: 1rem; /* Default text size */
+}
+
+.size-L {
+  padding: 0.75rem 1.5rem; /* Large padding */
+  font-size: 1.125rem; /* Larger text size */
 }
 </style>

@@ -12,8 +12,8 @@
       <FieldSelect v-if="dropdownOptions.length > 0" :options="dropdownOptions" :defaultValue="defaultSelectedValue" @changeValue="handleSelectionChange" :disabled="store.isAlreadyInCart(product)" />
       <FieldCounter :product="product" v-model:amount="amount" :maxAmount="product?.amount" />
       <div v-if="product?.amount > 0" class="lembrace-website-product-buttons">
-        <IconButton @click="addToCart" name="mdi:cart-plus" :size="THEME_ICON_BUTTON_SIZE" label="Toevoegen aan winkelwagen" :disabled="store.isAlreadyInCart(product)" />
-        <IconButton v-if="store.isAlreadyInCart(product)" @click="removeFromCart" name="mdi-cart-arrow-up" :size="THEME_ICON_BUTTON_SIZE" :disabled="!store.isAlreadyInCart(product)" backgroundColor="red" />
+        <IconButton @click="addToCart" name="mdi:cart-plus" label="Toevoegen aan winkelwagen" :disabled="store.isAlreadyInCart(product)" />
+        <IconButton v-if="store.isAlreadyInCart(product)" @click="removeFromCart" name="mdi-cart-arrow-up" :disabled="!store.isAlreadyInCart(product)" backgroundColor="red" />
       </div>
       <!-- TODO: Uitverkocht component maken -->
       <div v-if="product?.amount <= 0" class="lembrace-website-sold-out">
@@ -25,7 +25,6 @@
 </template>
 
 <script setup lang="ts">
-import { THEME_ICON_BUTTON_SIZE } from '../../logic/constants';
 import { useGlobalStore } from '../stores/global';
 
 const store = useGlobalStore();
