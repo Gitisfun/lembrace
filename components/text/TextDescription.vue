@@ -1,5 +1,5 @@
 <template>
-  <p class="lembrace-website-text-description" :class="`size-${size}`">
+  <p class="lembrace-website-text-description" :class="getClasses">
     {{ description }}
   </p>
 </template>
@@ -15,7 +15,13 @@ const props = defineProps({
     default: 'M',
     validator: (value: string) => ['S', 'M', 'L'].includes(value),
   },
+  hasMargin: {
+    type: Boolean,
+    default: true,
+  },
 });
+
+const getClasses = props.hasMargin ? [`size-${props.size}`, `margin-${props.size}`] : [`size-${props.size}`];
 </script>
 
 <style scoped>
@@ -23,18 +29,27 @@ const props = defineProps({
   font-family: Montserrat;
 }
 
+.margin-S {
+  margin-bottom: 1rem;
+}
+
+.margin-M {
+  margin-bottom: 1.5rem;
+}
+
+.margin-L {
+  margin-bottom: 2rem;
+}
+
 .size-S {
   font-size: 0.875rem;
-  margin-bottom: 1rem;
 }
 
 .size-M {
   font-size: 1rem;
-  margin-bottom: 1.5rem;
 }
 
 .size-L {
   font-size: 1.125rem;
-  margin-bottom: 2rem;
 }
 </style>

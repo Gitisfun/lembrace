@@ -1,5 +1,5 @@
 <template>
-  <h2 class="lembrace-website-text-subtitle" :class="`size-${props.size}`">
+  <h2 class="lembrace-website-text-subtitle" :class="getClasses">
     <slot></slot>
   </h2>
 </template>
@@ -11,7 +11,13 @@ const props = defineProps({
     default: 'M',
     validator: (value: string) => ['S', 'M', 'L'].includes(value),
   },
+  hasMargin: {
+    type: Boolean,
+    default: true,
+  },
 });
+
+const getClasses = props.hasMargin ? [`size-${props.size}`, `margin-${props.size}`] : [`size-${props.size}`];
 </script>
 
 <style scoped>
@@ -19,18 +25,27 @@ const props = defineProps({
   font-weight: 600;
 }
 
+.margin-S {
+  margin-bottom: 1rem;
+}
+
+.margin-M {
+  margin-bottom: 1.25rem;
+}
+
+.margin-L {
+  margin-bottom: 1.5rem;
+}
+
 .size-S {
   font-size: 1.25rem;
-  /* Add margin-bottom */
 }
 
 .size-M {
   font-size: 1.5rem;
-  margin-bottom: 1.25rem;
 }
 
 .size-L {
   font-size: 2rem;
-  margin-bottom: 1.5rem;
 }
 </style>

@@ -12,20 +12,22 @@
       <FieldSelect v-if="dropdownOptions.length > 0" :options="dropdownOptions" :defaultValue="defaultSelectedValue" @changeValue="handleSelectionChange" :disabled="store.isAlreadyInCart(product)" />
       <FieldCounter :product="product" v-model:amount="amount" :maxAmount="product?.amount" />
       <div v-if="product?.amount > 0" class="lembrace-website-product-buttons">
-        <IconButton @click="addToCart" name="mdi:cart-plus" size="1.5rem" label="Toevoegen aan winkelwagen" :disabled="store.isAlreadyInCart(product)" />
-        <IconButton v-if="store.isAlreadyInCart(product)" @click="removeFromCart" name="mdi-cart-arrow-up" size="1.5rem" :disabled="!store.isAlreadyInCart(product)" backgroundColor="red" />
+        <IconButton @click="addToCart" name="mdi:cart-plus" :size="THEME_ICON_BUTTON_SIZE" label="Toevoegen aan winkelwagen" :disabled="store.isAlreadyInCart(product)" />
+        <IconButton v-if="store.isAlreadyInCart(product)" @click="removeFromCart" name="mdi-cart-arrow-up" :size="THEME_ICON_BUTTON_SIZE" :disabled="!store.isAlreadyInCart(product)" backgroundColor="red" />
       </div>
       <!-- TODO: Uitverkocht component maken -->
       <div v-if="product?.amount <= 0" class="lembrace-website-sold-out">
         <IconGeneric name="mdi:alert-circle" size="2rem" />
-        <TextDescription style="margin-bottom: 0rem" :description="`Dit product is helaas uitverkocht.`" />
+        <TextDescription :hasMargin="false" :description="`Dit product is helaas uitverkocht.`" />
       </div>
     </div>
   </BoxContainer>
 </template>
 
 <script setup lang="ts">
+import { THEME_ICON_BUTTON_SIZE } from '../../logic/constants';
 import { useGlobalStore } from '../stores/global';
+
 const store = useGlobalStore();
 
 const route = useRoute();

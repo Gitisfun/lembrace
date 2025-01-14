@@ -5,18 +5,19 @@
     </div>
     <div class="lembrace-website-cart-item-details">
       <div class="lembrace-website-cart-item-row">
-        <h2>{{ item.name }}</h2>
-        <TextPrice style="margin: 0px" :label="item?.price" />
+        <TextSubtitle :hasMargin="false">{{ item.name }}</TextSubtitle>
+        <TextPrice :hasMargin="false" :label="item?.price" />
       </div>
       <div class="lembrace-website-cart-item-row">
         <FieldCounterCartItem :id="item.documentId" :amount="item.amount" :maxAmount="item.maxAmount" />
-        <IconButton @click="removeFromCart" name="mdi-cart-arrow-up" size="1.5rem" backgroundColor="red" />
+        <IconButton @click="removeFromCart" name="mdi-cart-arrow-up" :size="THEME_ICON_BUTTON_SIZE" />
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { THEME_ICON_BUTTON_SIZE } from '../logic/constants';
 import { useGlobalStore } from '../../stores/global';
 const store = useGlobalStore();
 
