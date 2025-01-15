@@ -2,9 +2,9 @@
   <div class="lembrace-website-page-product-page">
     <BoxContainer class="lembrace-website-page-product-page-content">
       <ProductFilter class="lembrace-website-page-product-left" />
-      <div>
+      <div class="lembrace-website-products-container">
         <div class="lembrace-website-products-filtering">
-          <FieldInput v-model="searchQuery" placeholder="Zoek een product" style="flex-grow: 1" />
+          <FieldInput v-model="searchQuery" placeholder="Zoek een product" class="lembrace-search-input" />
           <IconButton class="lembrace-website-products-filter-btn-mobile" @click="toggleFiltering" name="mdi-filter-outline" />
         </div>
         <transition name="filter-menu">
@@ -25,6 +25,7 @@
 
 <script setup lang="ts">
 import { useGlobalStore } from '../../stores/global';
+import { debounce } from 'lodash';
 
 const store = useGlobalStore();
 const { find } = useStrapi();
@@ -35,84 +36,78 @@ function toggleFiltering() {
   isFiltering.value = !isFiltering.value;
 }
 
-async function fetchProducts(query) {
-  const response = await find('products', {
-    populate: ['image'],
-    filters: { name: { $containsi: query } },
-    pagination: {
-      pageSize: 4,
-      page: 1,
-    },
-  });
-  store.setPagination(response.meta?.pagination);
-  store.setProducts(response);
+async function fetchProducts(query = '') {
+  try {
+    const response = await find('products', {
+      populate: ['image'],
+      filters: { name: { $containsi: query } },
+      pagination: { pageSize: 4, page: 1 },
+    });
+    store.setPagination(response.meta?.pagination);
+    store.setProducts(response);
+  } catch (error) {
+    console.error('Failed to fetch products:', error);
+  }
 }
 
-watch(searchQuery, async (newQuery) => {
-  console.log('newQuery');
-  console.log(newQuery);
+// Debounce the API call to prevent excessive fetching
+const debouncedFetch = debounce(fetchProducts, 300);
 
-  if (newQuery) {
-    await fetchProducts(newQuery);
-  } else {
-    await fetchProducts();
-  }
+// Watch searchQuery for changes
+watch(searchQuery, (newQuery) => {
+  debouncedFetch(newQuery);
 });
 </script>
+
 <style scoped>
-/* Filter menu open and close transition */
+/* Transitions for filter menu */
 .filter-menu-enter-active,
 .filter-menu-leave-active {
   transition: all 0.3s ease;
 }
-
 .filter-menu-enter-from {
   opacity: 0;
   transform: translateY(-10px);
 }
-
 .filter-menu-enter-to {
   opacity: 1;
   transform: translateY(0);
 }
-
 .filter-menu-leave-from {
   opacity: 1;
   transform: translateY(0);
 }
-
 .filter-menu-leave-to {
   opacity: 0;
   transform: translateY(-10px);
 }
 
-/* Product list transition */
+/* Transitions for product list */
 .product-list-enter-active,
 .product-list-leave-active {
   transition: opacity 0.4s ease, transform 0.4s ease;
 }
-
 .product-list-enter-from {
   opacity: 0;
   transform: translateY(20px);
 }
-
 .product-list-enter-to {
   opacity: 1;
   transform: translateY(0);
 }
-
 .product-list-leave-from {
   opacity: 1;
   transform: translateY(0);
 }
-
 .product-list-leave-to {
   opacity: 0;
   transform: translateY(20px);
 }
 
-/* Other styles */
+/* Layout and Styling */
+.lembrace-website-products-container {
+  flex-grow: 1;
+}
 
 .lembrace-website-products-filtering {
   display: flex;
@@ -121,10 +116,8 @@ watch(searchQuery, async (newQuery) => {
   margin-bottom: 1rem;
 }
 
-.lembrace-website-filtering-mobile-open {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+.lembrace-search-input {
+  flex-grow: 1;
 }
 
 .lembrace-website-page-product-left {
@@ -132,26 +125,27 @@ watch(searchQuery, async (newQuery) => {
 }
 
 .lembrace-website-products-search-mobile {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin: 2rem 0;
 }
 
 .lembrace-website-products-filter-btn-mobile {
   display: block;
 }
+
 .lembrace-website-page-product-page {
   display: flex;
   justify-content: center;
+  margin: 0px;
 }
+
 .lembrace-website-page-product-page-content {
   max-width: 1200px;
+  display: flex;
+
+  flex-direction: column;
 }
 
-/* Extra Small Devices, Phones */
-@media (min-width: 480px) {
-}
-
-/* Small Devices, Tablets */
+/* Responsive Design */
 @media (min-width: 768px) {
   .lembrace-website-page-product-left {
     display: block;
@@ -159,19 +153,11 @@ watch(searchQuery, async (newQuery) => {
     border-right: 1px solid lightgray;
   }
   .lembrace-website-page-product-page-content {
-    display: flex;
+    flex-direction: row;
     gap: 2rem;
   }
   .lembrace-website-products-filter-btn-mobile {
     display: none;
   }
-}
-
-/* Medium Devices, Desktops */
-@media (min-width: 992px) {
-}
-
-/* Large Devices, Wide Screens */
-@media (min-width: 1200px) {
 }
 </style>

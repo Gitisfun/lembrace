@@ -1,5 +1,5 @@
 <template>
-  <div v-if="store.pagination" class="lembrace-website-product-pagination">
+  <div v-if="store.pagination?.total > 0" class="lembrace-website-product-pagination">
     <IconButton @click="previousPage" name="mdi-keyboard-arrow-left" :disabled="store.getCurrentPage === 1" />
     <TextLabel :hasMargin="false" :label="formattedLabel" />
     <IconButton @click="nextPage" name="mdi-keyboard-arrow-right" :disabled="store.getCurrentPage === store.getTotalPages" />
@@ -44,10 +44,16 @@ async function nextPage() {
 
 <style scoped>
 .lembrace-website-product-pagination {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  margin-top: 3rem;
+  display: none;
+}
+
+@media (min-width: 600px) {
+  .lembrace-website-product-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 3rem;
+  }
 }
 </style>

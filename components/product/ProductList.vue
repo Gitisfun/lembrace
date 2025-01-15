@@ -6,6 +6,7 @@
   <div class="lembrace-website-product-items-mobile">
     <ProductItemMobile v-for="product in store.getProducts" :id="product.documentId" :title="product.name" :price="product.price" :img="product.image.url" :discount="product.discount" />
   </div>
+  <div>Niks gevonden</div>
 </template>
 
 <script setup lang="ts">
@@ -14,26 +15,6 @@ import { useGlobalStore } from '../../stores/global';
 const store = useGlobalStore();
 const { find } = useStrapi();
 
-/*
-const response = await find('products', {
-  populate: ['image'],
-  filters: {
-    category: {
-      label: {
-        $containsi: [],
-      },
-    },
-    material: {
-      label: {
-        $containsi: [],
-      },
-    },
-    discount: {
-      $gt: 0,
-    },
-  },
-});
-*/
 const response = await find('products', {
   populate: ['image'],
   pagination: {
@@ -42,10 +23,6 @@ const response = await find('products', {
 });
 
 store.setPagination(response.meta?.pagination);
-
-console.log('response');
-console.log(response);
-
 store.setProducts(response);
 </script>
 
