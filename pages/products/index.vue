@@ -36,6 +36,16 @@ function toggleFiltering() {
   isFiltering.value = !isFiltering.value;
 }
 
+const response = await find('products', {
+  populate: ['image'],
+  pagination: {
+    pageSize: 4,
+  },
+});
+store.setVisibiltyMoreButton(true);
+store.setPagination(response.meta?.pagination);
+store.setProducts(response);
+
 async function fetchProducts(query = '') {
   try {
     const response = await find('products', {

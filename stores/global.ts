@@ -12,13 +12,14 @@ export const useGlobalStore = defineStore('global', {
     pagination: null,
     isMoreButtonVisible: true,
     searchQuery: '',
+    filteredCategoriesSelection: [],
+    filteredMaterialsSelection: [],
+    hasDiscoundFilter: false,
   }),
   getters: {
     getProducts: (state) => state.products.data,
     getShoppingCart: (state) => state.shoppingCart,
-    // TODO: Total must be calculated by multiplying the quantity of each item by its price --- Doesn't work
     getShoppingCartSubtotal: (state) => state.shoppingCart.reduce((acc, item) => acc + item.price * item.amount, 0),
-    //getShoppingCartTotal: (state) => state.shoppingCart.reduce((acc, item) => acc + item.price, 0),
     getShoppingCartCount: (state) => state.shoppingCart.length,
     isAlreadyInCart: (state) => (product) => state.shoppingCart.some((item) => item.documentId === product.documentId),
     getShoppingCartItem: (state) => (documentId) => state.shoppingCart.find((item) => item.documentId === documentId),
@@ -27,6 +28,7 @@ export const useGlobalStore = defineStore('global', {
     getTotalPages: (state) => state.pagination?.pageCount,
     getLimit: (state) => state.pagination?.limit ?? 4,
     getTotal: (state) => state.pagination?.total,
+    getDiscountFilter: (state) => (state.hasDiscoundFilter ? { $gt: 0.01 } : undefined),
   },
   actions: {
     setSearchQuery(value) {
@@ -87,6 +89,15 @@ export const useGlobalStore = defineStore('global', {
           this.removeFromCart({ documentId: id });
         }
       }
+    },
+    setFilteredCategoriesSelection(value) {
+      this.filteredCategoriesSelection = value;
+    },
+    setFilteredMaterialsSelection(value) {
+      this.filteredMaterialsSelection = value;
+    },
+    setDiscoundFilter(value) {
+      this.hasDiscoundFilter = value;
     },
   },
   persist: {

@@ -14,17 +14,6 @@
 import { useGlobalStore } from '../../stores/global';
 
 const store = useGlobalStore();
-const { find } = useStrapi();
-
-const response = await find('products', {
-  populate: ['image'],
-  pagination: {
-    pageSize: 4,
-  },
-});
-store.setVisibiltyMoreButton(true);
-store.setPagination(response.meta?.pagination);
-store.setProducts(response);
 </script>
 
 <style scoped>
