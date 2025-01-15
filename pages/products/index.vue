@@ -50,7 +50,12 @@ async function fetchProducts(query = '') {
   try {
     const response = await find('products', {
       populate: ['image'],
-      filters: { name: { $containsi: query } },
+      filters: {
+        name: { $containsi: store.searchQuery },
+        category: { label: { $in: store.filteredCategoriesSelection } },
+        materials: { label: { $in: store.filteredMaterialsSelection } },
+        discount: store.getDiscountFilter,
+      },
       pagination: { pageSize: 4, page: 1 },
     });
     store.setPagination(response.meta?.pagination);

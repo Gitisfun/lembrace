@@ -15,7 +15,12 @@ async function fetchProducts() {
     const nextLimit = limit + 4;
     const response = await find('products', {
       populate: ['image'],
-      filters: { name: { $containsi: store.searchQuery } },
+      filters: {
+        name: { $containsi: store.searchQuery },
+        category: { label: { $in: store.filteredCategoriesSelection } },
+        materials: { label: { $in: store.filteredMaterialsSelection } },
+        discount: store.getDiscountFilter,
+      },
       pagination: {
         limit: nextLimit,
       },
