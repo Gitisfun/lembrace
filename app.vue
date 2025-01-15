@@ -20,6 +20,12 @@ body {
 }
 */
 
+body {
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fbc2eb);
+  background-attachment: fixed;
+  background-size: cover;
+}
+
 :root {
   --primary-color: white;
   --secondary-color: white;

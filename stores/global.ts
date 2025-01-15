@@ -7,6 +7,7 @@ export const useGlobalStore = defineStore('global', {
     shoppingCart: [],
     filterCategoriesList: [],
     filterMaterialsList: [],
+    filterOthers: [],
     products: [],
     pagination: null,
     isMoreButtonVisible: true,

@@ -6,11 +6,11 @@
     </div>
     <TextSubtitle>Materiaal</TextSubtitle>
     <div class="lembrace-website-checkboxes">
-      <FieldCheckBox v-for="item in materials" :key="item.id" :id="item.id" :label="item.label" :value="item.documentId" v-model="selectedOptions" />
+      <FieldCheckBox v-for="item in materials" :key="item.id" :id="item.id" :label="item.label" :value="item.documentId" v-model="store.filterMaterialsList" />
     </div>
     <TextSubtitle>Andere</TextSubtitle>
     <div class="lembrace-website-checkboxes">
-      <FieldCheckBox id="korting" label="Korting" :value="'korting'" v-model="selectedOptions" />
+      <FieldCheckBox id="korting" label="Korting" :value="'korting'" v-model="store.filterOthers" />
     </div>
   </div>
 </template>
@@ -27,8 +27,6 @@ const responseMaterials = await find('materials');
 
 categories.value = responseCategories.data;
 materials.value = responseMaterials.data;
-
-const selectedOptions = ref([]);
 </script>
 
 <style scoped>
