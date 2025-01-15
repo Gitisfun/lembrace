@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <ProductItem v-for="product in products" :id="product.documentId" :title="product.name" :price="product.price" :img="product.image.url" :discount="product.discount" />
-  </div>
+  <ProductItem v-for="product in products" :id="product.documentId" :title="product.name" :price="product.price" :img="product.image.url" :discount="product.discount" />
 </template>
 
 <script setup lang="ts">

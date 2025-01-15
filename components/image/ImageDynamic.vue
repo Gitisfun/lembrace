@@ -44,18 +44,20 @@ const sizeClass = computed(() => {
 }
 
 .size-m {
+  width: 100%;
+  height: auto;
+}
+
+.size-l {
   width: 16rem;
   height: 16rem;
 }
 
-.size-l {
-  width: 20rem;
-  height: 20rem;
-}
 .size-xl {
   width: 100%;
   height: auto;
 }
+
 @media (min-width: 768px) {
   .size-xs {
     width: 10rem;
@@ -76,6 +78,7 @@ const sizeClass = computed(() => {
     width: 20rem;
     height: 20rem;
   }
+
   .size-xl {
     width: 25rem;
     height: 25rem;

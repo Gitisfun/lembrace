@@ -22,7 +22,6 @@
 a {
   color: black;
   text-decoration: none;
-  padding: 0.375rem 1rem;
   border-radius: 0.5rem;
   transition: color 1s ease;
 }

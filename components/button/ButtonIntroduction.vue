@@ -9,6 +9,7 @@
   border: 0.125rem solid black;
   background-color: black;
   font-weight: 500;
+  padding: 0.375rem 1rem;
   font-size: large;
   color: white;
   transition: background-color 0.5s ease-in-out;

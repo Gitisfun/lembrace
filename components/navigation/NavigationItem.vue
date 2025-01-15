@@ -10,6 +10,9 @@ const { title, href } = defineProps<{
 </script>
 
 <style scoped>
+a {
+  padding: 0.375rem 1rem;
+}
 .router-link-active {
   background-color: black;
   color: white;

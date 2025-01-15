@@ -36,6 +36,8 @@ const selectedOptions = ref([]);
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid lightgray;
 }
 
 .lembrace-website-checkboxes:not(:last-child) {
