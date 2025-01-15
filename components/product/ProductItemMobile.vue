@@ -15,7 +15,6 @@
 <script setup lang="ts">
 import { formatPrice } from '../../logic/utils';
 
-// Define props
 const props = defineProps({
   id: {
     type: [String, Number],
