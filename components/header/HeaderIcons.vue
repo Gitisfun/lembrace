@@ -10,7 +10,6 @@
 #lembrace-website-header-logo {
   height: 4.25rem;
   display: flex;
-  flex: 1;
   justify-content: end;
   align-items: center;
 }

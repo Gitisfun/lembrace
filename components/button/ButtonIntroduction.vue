@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="lembrace-website-button-container">
     <NuxtLink class="lembrace-website-button" to="/products"><slot></slot></NuxtLink>
   </div>
 </template>
@@ -17,5 +17,16 @@
 .lembrace-website-button:hover {
   background-color: white;
   color: black;
+}
+
+.lembrace-website-button-container {
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .lembrace-website-button-container {
+    justify-content: start;
+  }
 }
 </style>

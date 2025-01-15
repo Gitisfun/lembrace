@@ -1,11 +1,13 @@
 <template>
-  <BoxContainer class="lembrace-website-page-products">
-    <ProductFilter class="lembrace-website-page-left" />
-    <ProductList class="lembrace-website-page-right" />
+  <BoxContainer>
+    <div class="lembrace-website-page-products">
+      <ProductFilter class="lembrace-website-page-left" />
+    </div>
   </BoxContainer>
 </template>
 
 <style scoped>
+/*
 .lembrace-website-page-products {
   display: flex;
 }
@@ -19,6 +21,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 }
+  */
 
 @media (max-width: 768px) {
   .lembrace-website-page-left {

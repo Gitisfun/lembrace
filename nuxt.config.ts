@@ -19,6 +19,7 @@ export default defineNuxtConfig({
   googleFonts: {
     families: {
       Itim: [300, 400, 500, 600, 700, 800], // Choose font weights
+      'Alex+Brush': true, // Include Figma Hand font
     },
     display: 'swap', // Improves loading behavior
   },

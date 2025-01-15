@@ -13,4 +13,8 @@
   justify-content: center;
   align-items: center;
 }
+a {
+  font-family: 'Alex Brush';
+  font-size: 1.75rem; /* TODO: Make responsive */
+}
 </style>

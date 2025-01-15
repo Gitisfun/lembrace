@@ -15,7 +15,6 @@ const navigationItems = [
 <style scoped>
 .lembrace-website-nav-menu {
   display: flex;
-  flex: 1;
   gap: 1rem;
   height: 4.25rem;
   align-items: center;

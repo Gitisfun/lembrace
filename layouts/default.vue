@@ -1,6 +1,7 @@
 <template>
   <div id="lembrace-default-layout-container">
     <HeaderBar />
+    <HeaderBarMobile />
     <main>
       <!--
       <main style="background-color: #e9e4d8">

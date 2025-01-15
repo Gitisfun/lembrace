@@ -3,6 +3,7 @@ import { defineStore } from 'pinia';
 
 export const useGlobalStore = defineStore('global', {
   state: () => ({
+    isMenuOpen: false,
     shoppingCart: [],
     filterCategoriesList: [],
     filterMaterialsList: [],
@@ -18,6 +19,12 @@ export const useGlobalStore = defineStore('global', {
     getShoppingCartTotal: (state) => state.getShoppingCartSubtotal + DELIVERY_COST,
   },
   actions: {
+    openMenu() {
+      this.isMenuOpen = true;
+    },
+    closeMenu() {
+      this.isMenuOpen = false;
+    },
     addToCart(product) {
       const exists = this.shoppingCart.some((item) => item.documentId === product.documentId);
       if (!exists) {

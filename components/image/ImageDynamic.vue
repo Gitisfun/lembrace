@@ -53,7 +53,32 @@ const sizeClass = computed(() => {
   height: 20rem;
 }
 .size-xl {
-  width: 25rem;
-  height: 25rem;
+  width: 100%;
+  height: auto;
+}
+@media (min-width: 768px) {
+  .size-xs {
+    width: 10rem;
+    height: 10rem;
+  }
+
+  .size-s {
+    width: 13rem;
+    height: 13rem;
+  }
+
+  .size-m {
+    width: 16rem;
+    height: 16rem;
+  }
+
+  .size-l {
+    width: 20rem;
+    height: 20rem;
+  }
+  .size-xl {
+    width: 25rem;
+    height: 25rem;
+  }
 }
 </style>
