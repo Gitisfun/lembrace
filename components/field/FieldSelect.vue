@@ -22,12 +22,11 @@ export default {
   },
   data() {
     return {
-      selectedValue: this.defaultValue, // Set initial value from the defaultValue prop
+      selectedValue: this.defaultValue,
     };
   },
   methods: {
     emitChange() {
-      // Emit the selected value as an argument
       this.$emit('changeValue', this.selectedValue);
     },
   },

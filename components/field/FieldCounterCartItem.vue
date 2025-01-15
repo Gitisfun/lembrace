@@ -17,7 +17,6 @@ import { useGlobalStore } from '../stores/global';
 
 const store = useGlobalStore();
 
-// Props
 const props = defineProps({
   id: {
     type: [String, Number],

@@ -43,7 +43,6 @@ const updateValue = (event: Event) => {
   } else {
     updatedValue = props.modelValue.filter((item) => item !== props.value);
   }
-
   emit('update:modelValue', updatedValue);
 };
 </script>

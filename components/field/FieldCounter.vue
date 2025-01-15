@@ -15,7 +15,6 @@ import { useGlobalStore } from '../stores/global';
 
 const store = useGlobalStore();
 
-// Props
 const props = defineProps({
   product: {
     type: Object,
@@ -31,13 +30,10 @@ const props = defineProps({
   },
 });
 
-// Emit for parent communication
 const emit = defineEmits(['update:amount']);
 
-// Local state for amount
 const currentAmount = ref(props.amount);
 
-// Watch for parent updates to `amount` prop
 watch(
   () => props.amount,
   (newVal) => {
@@ -45,7 +41,6 @@ watch(
   }
 );
 
-// Handlers
 function subtract() {
   if (currentAmount.value > 1) {
     currentAmount.value--;
