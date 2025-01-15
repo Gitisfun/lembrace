@@ -20,6 +20,7 @@
 <script setup lang="ts">
 import { DELIVERY_COST } from '../logic/constants';
 import { useGlobalStore } from '../stores/global';
+
 const store = useGlobalStore();
 
 const pay = () => null;

@@ -2,11 +2,11 @@
   <div class="lembrace-website-product-items">
     <ProductItem v-for="product in store.getProducts" :id="product.documentId" :title="product.name" :price="product.price" :img="product.image.url" :discount="product.discount" />
   </div>
-  <ProductPagination />
   <div class="lembrace-website-product-items-mobile">
     <ProductItemMobile v-for="product in store.getProducts" :id="product.documentId" :title="product.name" :price="product.price" :img="product.image.url" :discount="product.discount" />
   </div>
-  <div>Niks gevonden</div>
+  <ProductPagination />
+  <div v-if="store.getTotalPages === 0">We konden helaas niks vinden...</div>
 </template>
 
 <script setup lang="ts">

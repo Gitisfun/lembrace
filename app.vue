@@ -11,6 +11,14 @@
   padding: 0rem;
   font-family: 'Itim', sans-serif;
 }
+/*
+body {
+  background: linear-gradient(135deg, #fff8e1, #f6e6cd, #d9a874);
+  background-attachment: fixed;
+  background-size: cover;
+  color: #3e2c20; Darker text for contrast 
+}
+*/
 
 :root {
   --primary-color: white;

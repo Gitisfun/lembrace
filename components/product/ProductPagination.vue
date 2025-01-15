@@ -1,5 +1,5 @@
 <template>
-  <div v-if="store.pagination?.total > 0" class="lembrace-website-product-pagination">
+  <div v-if="store.getTotalPages > 1" class="lembrace-website-product-pagination">
     <IconButton @click="previousPage" name="mdi-keyboard-arrow-left" :disabled="store.getCurrentPage === 1" />
     <TextLabel :hasMargin="false" :label="formattedLabel" />
     <IconButton @click="nextPage" name="mdi-keyboard-arrow-right" :disabled="store.getCurrentPage === store.getTotalPages" />

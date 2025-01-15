@@ -139,9 +139,8 @@ watch(searchQuery, (newQuery) => {
 }
 
 .lembrace-website-page-product-page-content {
-  max-width: 1200px;
+  width: 100%;
   display: flex;
-
   flex-direction: column;
 }
 
@@ -158,6 +157,12 @@ watch(searchQuery, (newQuery) => {
   }
   .lembrace-website-products-filter-btn-mobile {
     display: none;
+  }
+}
+
+@media (min-width: 1200px) {
+  .lembrace-website-page-product-page-content {
+    max-width: 1200px;
   }
 }
 </style>
