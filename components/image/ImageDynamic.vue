@@ -6,7 +6,7 @@
 const { src, alt, size } = defineProps<{
   src: string;
   alt: string;
-  size?: 'XS' | 'S' | 'M' | 'L' | 'XL';
+  size?: 'XS' | 'S' | 'P' | 'M' | 'L' | 'XL';
 }>();
 
 const sizeClass = computed(() => {
@@ -15,6 +15,8 @@ const sizeClass = computed(() => {
       return 'size-xs';
     case 'S':
       return 'size-s';
+    case 'P':
+      return 'size-p';
     case 'M':
       return 'size-m';
     case 'L':
@@ -43,9 +45,14 @@ const sizeClass = computed(() => {
   height: 13rem;
 }
 
-.size-m {
-  width: 100%;
+.size-p {
+  width: 6rem;
   height: auto;
+}
+
+.size-m {
+  width: 16rem;
+  height: 16rem;
 }
 
 .size-l {
@@ -58,7 +65,7 @@ const sizeClass = computed(() => {
   height: auto;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 480px) {
   .size-xs {
     width: 10rem;
     height: 10rem;
@@ -67,6 +74,11 @@ const sizeClass = computed(() => {
   .size-s {
     width: 13rem;
     height: 13rem;
+  }
+
+  .size-p {
+    width: 100%;
+    height: auto;
   }
 
   .size-m {

@@ -1,12 +1,15 @@
 <template>
   <NuxtLink :to="href" class="lembrace-website-product-item">
     <ImageDynamic size="P" :src="img" alt="product" />
-    <TextDescription :hasMargin="false" :description="props.title" class="lembrace-website-product-item-text" />
-    <div class="lembrace-website-product-item-prices">
-      <TextDescription :hasMargin="false" :description="formattedPrice" size="L" class="lembrace-website-product-item-text" />
-      <span v-if="props.discount" class="lembrace-website-product-item-discount lembrace-website-product-item-text">-{{ props.discount }}%</span>
+    <div class="lembrace-website-product-item-info">
+      <TextDescription :hasMargin="false" :description="props.title" />
+      <div class="lembrace-website-product-item-prices">
+        <TextDescription :hasMargin="false" :description="formattedPrice" />
+        <span v-if="props.discount" class="lembrace-website-product-item-discount">-{{ props.discount }}%</span>
+      </div>
     </div>
   </NuxtLink>
+  <div class="horizontal-divider"></div>
 </template>
 
 <script setup lang="ts">
@@ -40,22 +43,29 @@ const formattedPrice = formatPrice(props.price);
 </script>
 
 <style scoped>
+.horizontal-divider {
+  border-bottom: 1px solid #ddd;
+  margin: 1rem 0;
+}
 .lembrace-website-product-item {
   width: 100%;
   height: fit-content;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
 
-.lembrace-website-product-item-text {
-  margin-top: 0.25rem;
+.lembrace-website-product-item-info {
+  display: flex;
+  gap: 0.25rem;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .lembrace-website-product-item-prices {
   display: flex;
   justify-content: space-between;
-  gap: 0.5rem;
 }
 
 .lembrace-website-product-item-discount {
