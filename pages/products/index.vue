@@ -45,6 +45,7 @@ async function fetchProducts(query = '') {
     });
     store.setPagination(response.meta?.pagination);
     store.setProducts(response);
+    store.setVisibiltyMoreButton(true);
   } catch (error) {
     console.error('Failed to fetch products:', error);
   }
@@ -55,6 +56,11 @@ const debouncedFetch = debounce(fetchProducts, 300);
 
 // Watch searchQuery for changes
 watch(searchQuery, (newQuery) => {
+  store.setSearchQuery(newQuery);
+  console.log('store.searchQuery');
+  console.log(store.searchQuery);
+  console.log(newQuery);
+
   debouncedFetch(newQuery);
 });
 </script>

@@ -6,7 +6,8 @@
     <ProductItemMobile v-for="product in store.getProducts" :id="product.documentId" :title="product.name" :price="product.price" :img="product.image.url" :discount="product.discount" />
   </div>
   <ProductPagination />
-  <div v-if="store.getTotalPages === 0">We konden helaas niks vinden...</div>
+  <ProductMore />
+  <div v-if="store.getTotal === 0">We konden helaas niks vinden...</div>
 </template>
 
 <script setup lang="ts">
@@ -21,7 +22,7 @@ const response = await find('products', {
     pageSize: 4,
   },
 });
-
+store.setVisibiltyMoreButton(true);
 store.setPagination(response.meta?.pagination);
 store.setProducts(response);
 </script>

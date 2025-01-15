@@ -18,6 +18,7 @@ const formattedLabel = computed(() => {
 async function fetchProducts(nextPage) {
   const response = await find('products', {
     populate: ['image'],
+    filters: { name: { $containsi: store.searchQuery } },
     pagination: {
       pageSize: 4,
       page: nextPage,

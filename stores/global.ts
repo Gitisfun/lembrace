@@ -9,6 +9,8 @@ export const useGlobalStore = defineStore('global', {
     filterMaterialsList: [],
     products: [],
     pagination: null,
+    isMoreButtonVisible: true,
+    searchQuery: '',
   }),
   getters: {
     getProducts: (state) => state.products.data,
@@ -22,8 +24,16 @@ export const useGlobalStore = defineStore('global', {
     getShoppingCartTotal: (state) => state.getShoppingCartSubtotal + DELIVERY_COST,
     getCurrentPage: (state) => state.pagination?.page,
     getTotalPages: (state) => state.pagination?.pageCount,
+    getLimit: (state) => state.pagination?.limit ?? 4,
+    getTotal: (state) => state.pagination?.total,
   },
   actions: {
+    setSearchQuery(value) {
+      this.searchQuery = value;
+    },
+    setVisibiltyMoreButton(value) {
+      this.isMoreButtonVisible = value;
+    },
     setPagination(value) {
       this.pagination = value;
     },
