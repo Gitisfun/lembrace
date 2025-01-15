@@ -1,16 +1,18 @@
 <template>
   <div class="lembrace-website-product-items">
-    <ProductItem v-for="product in products" :id="product.documentId" :title="product.name" :price="product.price" :img="product.image.url" :discount="product.discount" />
+    <ProductItem v-for="product in store.getProducts" :id="product.documentId" :title="product.name" :price="product.price" :img="product.image.url" :discount="product.discount" />
   </div>
+  <ProductPagination />
   <div class="lembrace-website-product-items-mobile">
-    <ProductItemMobile v-for="product in products" :id="product.documentId" :title="product.name" :price="product.price" :img="product.image.url" :discount="product.discount" />
+    <ProductItemMobile v-for="product in store.getProducts" :id="product.documentId" :title="product.name" :price="product.price" :img="product.image.url" :discount="product.discount" />
   </div>
 </template>
 
 <script setup lang="ts">
-const { find } = useStrapi();
+import { useGlobalStore } from '../../stores/global';
 
-const products = ref([]);
+const store = useGlobalStore();
+const { find } = useStrapi();
 
 /*
 const response = await find('products', {
@@ -34,9 +36,17 @@ const response = await find('products', {
 */
 const response = await find('products', {
   populate: ['image'],
+  pagination: {
+    pageSize: 4,
+  },
 });
 
-products.value = response.data;
+store.setPagination(response.meta?.pagination);
+
+console.log('response');
+console.log(response);
+
+store.setProducts(response);
 </script>
 
 <style scoped>

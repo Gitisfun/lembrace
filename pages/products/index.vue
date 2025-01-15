@@ -4,7 +4,7 @@
       <ProductFilter class="lembrace-website-page-product-left" />
       <div>
         <div class="lembrace-website-products-filtering">
-          <FieldInput v-model="name" placeholder="Zoek een product" style="flex-grow: 1" />
+          <FieldInput v-model="searchQuery" placeholder="Zoek een product" style="flex-grow: 1" />
           <IconButton class="lembrace-website-products-filter-btn-mobile" @click="toggleFiltering" name="mdi-filter-outline" />
         </div>
         <transition name="filter-menu">
@@ -24,14 +24,40 @@
 </template>
 
 <script setup lang="ts">
-const name = ref('');
-const isFiltering = ref(false);
-function toggleFiltering() {
-  console.log(isFiltering.value);
+import { useGlobalStore } from '../../stores/global';
 
+const store = useGlobalStore();
+const { find } = useStrapi();
+const searchQuery = ref('');
+const isFiltering = ref(false);
+
+function toggleFiltering() {
   isFiltering.value = !isFiltering.value;
 }
-function search() {}
+
+async function fetchProducts(query) {
+  const response = await find('products', {
+    populate: ['image'],
+    filters: { name: { $containsi: query } },
+    pagination: {
+      pageSize: 4,
+      page: 1,
+    },
+  });
+  store.setPagination(response.meta?.pagination);
+  store.setProducts(response);
+}
+
+watch(searchQuery, async (newQuery) => {
+  console.log('newQuery');
+  console.log(newQuery);
+
+  if (newQuery) {
+    await fetchProducts(newQuery);
+  } else {
+    await fetchProducts();
+  }
+});
 </script>
 <style scoped>
 /* Filter menu open and close transition */

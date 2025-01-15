@@ -7,8 +7,11 @@ export const useGlobalStore = defineStore('global', {
     shoppingCart: [],
     filterCategoriesList: [],
     filterMaterialsList: [],
+    products: [],
+    pagination: null,
   }),
   getters: {
+    getProducts: (state) => state.products.data,
     getShoppingCart: (state) => state.shoppingCart,
     // TODO: Total must be calculated by multiplying the quantity of each item by its price --- Doesn't work
     getShoppingCartSubtotal: (state) => state.shoppingCart.reduce((acc, item) => acc + item.price * item.amount, 0),
@@ -17,8 +20,16 @@ export const useGlobalStore = defineStore('global', {
     isAlreadyInCart: (state) => (product) => state.shoppingCart.some((item) => item.documentId === product.documentId),
     getShoppingCartItem: (state) => (documentId) => state.shoppingCart.find((item) => item.documentId === documentId),
     getShoppingCartTotal: (state) => state.getShoppingCartSubtotal + DELIVERY_COST,
+    getCurrentPage: (state) => state.pagination?.page,
+    getTotalPages: (state) => state.pagination?.pageCount,
   },
   actions: {
+    setPagination(value) {
+      this.pagination = value;
+    },
+    setProducts(list) {
+      this.products = list;
+    },
     openMenu() {
       this.isMenuOpen = true;
     },
