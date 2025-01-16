@@ -15,35 +15,17 @@ const formattedLabel = computed(() => {
   return `Pagina ${store.getCurrentPage} van ${store.getTotalPages}`;
 });
 
-async function fetchProducts(nextPage) {
-  const response = await find('products', {
-    populate: ['image'],
-    filters: {
-      name: { $containsi: store.searchQuery },
-      category: { label: { $in: store.filteredCategoriesSelection } },
-      materials: { label: { $in: store.filteredMaterialsSelection } },
-      discount: store.getDiscountFilter,
-    },
-    pagination: {
-      pageSize: 4,
-      page: nextPage,
-    },
-  });
-  store.setPagination(response.meta?.pagination);
-  store.setProducts(response);
-}
-
 async function previousPage() {
   if (store.getCurrentPage > 1) {
     const nextPage = store.getCurrentPage - 1;
-    await fetchProducts(nextPage);
+    await store.fetchProducts(nextPage);
   }
 }
 
 async function nextPage() {
   if (store.getCurrentPage < store.getTotalPages) {
     const nextPage = store.getCurrentPage + 1;
-    await fetchProducts(nextPage);
+    await store.fetchProducts(nextPage);
   }
 }
 </script>

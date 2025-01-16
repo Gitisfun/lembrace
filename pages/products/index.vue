@@ -46,37 +46,13 @@ store.setVisibiltyMoreButton(true);
 store.setPagination(response.meta?.pagination);
 store.setProducts(response);
 
-async function fetchProducts(query = '') {
-  try {
-    const response = await find('products', {
-      populate: ['image'],
-      filters: {
-        name: { $containsi: store.searchQuery },
-        category: { label: { $in: store.filteredCategoriesSelection } },
-        materials: { label: { $in: store.filteredMaterialsSelection } },
-        discount: store.getDiscountFilter,
-      },
-      pagination: { pageSize: 4, page: 1 },
-    });
-    store.setPagination(response.meta?.pagination);
-    store.setProducts(response);
-    store.setVisibiltyMoreButton(true);
-  } catch (error) {
-    console.error('Failed to fetch products:', error);
-  }
-}
-
 // Debounce the API call to prevent excessive fetching
-const debouncedFetch = debounce(fetchProducts, 300);
+const debouncedFetch = debounce(store.fetchProducts, 300);
 
 // Watch searchQuery for changes
 watch(searchQuery, (newQuery) => {
   store.setSearchQuery(newQuery);
-  console.log('store.searchQuery');
-  console.log(store.searchQuery);
-  console.log(newQuery);
-
-  debouncedFetch(newQuery);
+  debouncedFetch();
 });
 </script>
 

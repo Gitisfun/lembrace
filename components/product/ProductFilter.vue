@@ -33,32 +33,9 @@ const responseMaterials = await find('materials');
 categories.value = responseCategories.data;
 materials.value = responseMaterials.data;
 
-async function fetchProducts() {
-  try {
-    const response = await find('products', {
-      populate: ['image'],
-      filters: {
-        name: { $containsi: store.searchQuery },
-        category: { label: { $in: store.filteredCategoriesSelection } },
-        materials: { label: { $in: store.filteredMaterialsSelection } },
-        discount: store.getDiscountFilter,
-      },
-      pagination: { pageSize: 4, page: 1 },
-    });
-
-    store.setPagination(response.meta?.pagination);
-    store.setProducts(response);
-    store.setVisibiltyMoreButton(true);
-  } catch (error) {
-    console.error('Failed to fetch products:', error);
-  }
-}
-
-const debouncedFetch = debounce(fetchProducts, 300);
+const debouncedFetch = debounce(store.fetchProducts, 300);
 
 watch(filteredCategories, (value) => {
-  console.log(value);
-
   store.setFilteredCategoriesSelection(value);
   debouncedFetch();
 });

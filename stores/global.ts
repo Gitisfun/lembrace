@@ -99,6 +99,28 @@ export const useGlobalStore = defineStore('global', {
     setDiscoundFilter(value) {
       this.hasDiscoundFilter = value;
     },
+    async fetchProducts(nextPage = 1) {
+      try {
+        const { find } = useStrapi();
+        const response = await find('products', {
+          populate: ['image'],
+          filters: {
+            name: { $containsi: this.searchQuery },
+            category: { label: { $in: this.filteredCategoriesSelection } },
+            materials: { label: { $in: this.filteredMaterialsSelection } },
+            discount: this.getDiscountFilter,
+          },
+          pagination: { pageSize: 4, page: nextPage },
+        });
+
+        this.setPagination(response.meta?.pagination);
+        this.setProducts(response);
+        this.setVisibiltyMoreButton(true);
+      } catch (error) {
+        this.setProducts([]);
+        console.error('Failed to fetch products:', error);
+      }
+    },
   },
   persist: {
     enabled: true,
