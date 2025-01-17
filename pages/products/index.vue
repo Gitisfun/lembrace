@@ -32,6 +32,8 @@ const { find } = useStrapi();
 const searchQuery = ref('');
 const isFiltering = ref(false);
 
+store.resetFilters();
+
 function toggleFiltering() {
   isFiltering.value = !isFiltering.value;
 }
@@ -42,7 +44,7 @@ const response = await find('products', {
     pageSize: 4,
   },
 });
-store.setVisibiltyMoreButton(true);
+
 store.setPagination(response.meta?.pagination);
 store.setProducts(response);
 

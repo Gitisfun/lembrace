@@ -22,9 +22,14 @@
 </template>
 
 <script setup lang="ts">
+import { useGlobalStore } from '../stores/global';
+
+const store = useGlobalStore();
+const { find } = useStrapi();
+
 const isLoading = ref(true);
 const sortedCollection = ref([]);
-const { find } = useStrapi();
+
 const response = await find('homepage', {
   populate: {
     introduction: {

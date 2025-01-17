@@ -1,5 +1,5 @@
 <template>
-  <BoxCenter v-if="store.isMoreButtonVisible">
+  <BoxCenter v-if="store.shouldShowMoreButton">
     <IconButton class="lembrace-website-product-more" @click="fetchProducts" label="Toon meer" />
   </BoxCenter>
 </template>
@@ -27,9 +27,6 @@ async function fetchProducts() {
     });
     store.setPagination(response.meta?.pagination);
     store.setProducts(response);
-  }
-  if (store.getLimit > store.getTotal) {
-    store.setVisibiltyMoreButton(false);
   }
 }
 </script>

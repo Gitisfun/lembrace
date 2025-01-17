@@ -23,10 +23,10 @@ const store = useGlobalStore();
 const { find } = useStrapi();
 
 const categories = ref([]);
-const filteredCategories = ref([]);
+const filteredCategories = ref(store.filteredCategoriesSelection);
 const materials = ref([]);
-const filteredMaterials = ref([]);
-const filterOthers = ref([]);
+const filteredMaterials = ref(store.filteredMaterialsSelection);
+const filterOthers = ref(store.hasDiscoundFilter ? ['korting'] : []);
 const responseCategories = await find('categories');
 const responseMaterials = await find('materials');
 

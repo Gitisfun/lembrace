@@ -28,14 +28,12 @@ export const useGlobalStore = defineStore('global', {
     getTotalPages: (state) => state.pagination?.pageCount,
     getLimit: (state) => state.pagination?.limit ?? 4,
     getTotal: (state) => state.pagination?.total,
+    shouldShowMoreButton: (state) => state.getLimit < state.getTotal,
     getDiscountFilter: (state) => (state.hasDiscoundFilter ? { $gt: 0.01 } : undefined),
   },
   actions: {
     setSearchQuery(value) {
       this.searchQuery = value;
-    },
-    setVisibiltyMoreButton(value) {
-      this.isMoreButtonVisible = value;
     },
     setPagination(value) {
       this.pagination = value;
@@ -99,6 +97,11 @@ export const useGlobalStore = defineStore('global', {
     setDiscoundFilter(value) {
       this.hasDiscoundFilter = value;
     },
+    resetFilters() {
+      this.filteredCategoriesSelection = [];
+      this.filteredMaterialsSelection = [];
+      this.hasDiscoundFilter = false;
+    },
     async fetchProducts(nextPage = 1) {
       try {
         const { find } = useStrapi();
@@ -115,7 +118,6 @@ export const useGlobalStore = defineStore('global', {
 
         this.setPagination(response.meta?.pagination);
         this.setProducts(response);
-        this.setVisibiltyMoreButton(true);
       } catch (error) {
         this.setProducts([]);
         console.error('Failed to fetch products:', error);
