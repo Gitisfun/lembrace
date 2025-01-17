@@ -28,7 +28,6 @@
 import { useGlobalStore } from '../stores/global';
 
 const store = useGlobalStore();
-
 const route = useRoute();
 const { findOne } = useStrapi();
 

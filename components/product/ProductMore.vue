@@ -1,6 +1,6 @@
 <template>
   <BoxCenter v-if="store.isMoreButtonVisible">
-    <IconButton class="lembrace-website-product-more" @click="fetchProducts" name="mdi-cart-arrow-up" label="Toon meer" />
+    <IconButton class="lembrace-website-product-more" @click="fetchProducts" label="Toon meer" />
   </BoxCenter>
 </template>
 

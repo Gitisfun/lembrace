@@ -1,6 +1,6 @@
 <template>
   <button class="lembrace-website-icon-button" :class="`size-${size}`">
-    <IconGeneric :name="props.name" :size="iconSize" />
+    <IconGeneric v-if="props.name" :name="props.name" :size="iconSize" />
     <span v-if="props.label">{{ props.label }}</span>
   </button>
 </template>

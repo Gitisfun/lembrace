@@ -11,7 +11,7 @@
           <div v-if="isFiltering">
             <ProductFilter />
             <BoxCenter class="lembrace-website-products-search-mobile">
-              <IconButton @click="search" name="mdi-search" label="Zoek" />
+              <IconButton @click="toggleFiltering" name="mdi-search" label="Zoek" />
             </BoxCenter>
           </div>
         </transition>
